@@ -75,4 +75,13 @@
     justify-content: space-between;
     align-items: center;
   }
+
+  .oldPrice{
+    text-decoration: line-through;
+    font-size: 14px;
+    line-height: 22px;
+    padding: 4px 8px;
+    font-weight: 400;
+    color: $gray-text-color;
+  }
 }
