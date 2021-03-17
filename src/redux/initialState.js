@@ -15,6 +15,8 @@ const initialState = {
       stars: 2,
       promo: 'sale',
       newFurniture: true,
+      image:
+        'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80',
     },
     {
       id: 'aenean-ru-bristique-2',
@@ -24,6 +26,8 @@ const initialState = {
       stars: 2,
       promo: 'sale',
       newFurniture: true,
+      image:
+        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1134&q=80',
     },
     {
       id: 'aenean-ru-bristique-3',
@@ -33,6 +37,8 @@ const initialState = {
       stars: 2,
       promo: 'sale',
       newFurniture: true,
+      image:
+        'https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1298&q=80',
     },
     {
       id: 'aenean-ru-bristique-4',
@@ -42,6 +48,8 @@ const initialState = {
       stars: 2,
       promo: 'sale',
       newFurniture: true,
+      image:
+        'https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     },
     {
       id: 'aenean-ru-bristique-5',
@@ -51,6 +59,8 @@ const initialState = {
       stars: 2,
       promo: 'sale',
       newFurniture: true,
+      image:
+        'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80',
     },
     {
       id: 'aenean-ru-bristique-6',
@@ -60,6 +70,8 @@ const initialState = {
       stars: 2,
       promo: 'sale',
       newFurniture: true,
+      image:
+        'https://images.unsplash.com/photo-1449247709967-d4461a6a6103?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80',
     },
     {
       id: 'aenean-ru-bristique-7',
@@ -69,6 +81,8 @@ const initialState = {
       stars: 2,
       promo: 'sale',
       newFurniture: true,
+      image:
+        'https://images.unsplash.com/photo-1586105251261-72a756497a11?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1134&q=80',
     },
     {
       id: 'aenean-ru-bristique-8',
@@ -78,6 +92,8 @@ const initialState = {
       stars: 2,
       promo: 'sale',
       newFurniture: true,
+      image:
+        'https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1500&q=80',
     },
     {
       id: 'aenean-ru-bristique-9',
