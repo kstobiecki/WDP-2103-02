@@ -1,15 +1,29 @@
 @import "../../../styles/settings.scss";
 
 .root {
-  background-color: #ffffff;
-  border: 1px solid #e1e1e1;
+  background-color: $light-bg;
+  border: 1px solid $light-border-color;
   margin-bottom: 2rem;
+  transition:0.25s ease-in-out;
 
+  &:hover {
+    .actions .price> div{
+      background-color: $primary;
+    }
+    .photo .buttons {
+      visibility: visible;
+    }
+  }
+  &:hover{
+    transform:translate(-1px, 2px);
+    box-shadow: -25px 10px 15px -5px rgba(63, 63, 63, 0.349);
+  }
+ 
   .photo {
     position: relative;
     padding: 80% 10px 0 10px;
     background: {
-      color: #f4f5f7;
+      color: $gray-white-bg;
       size: contain;
       position: center;
       repeat: no-repeat;
@@ -22,15 +36,17 @@
       top: -30px;
       left: 50%;
       transform: translateX(-50%);
-      background-color: #292929;
+      background-color: $dark-bg;
       border-radius: 50%;
-      color: #ffffff;
+      color: $light-text-color;
       padding: 30px 15px 5px 15px;
     }
 
     .buttons {
       display: flex;
       justify-content: space-between;
+      visibility: hidden;
+      bottom: -50px;
     }
   }
 
@@ -48,14 +64,14 @@
     .stars {
       a {
         text-decoration: none;
-        color: rgb(42, 42, 42);
+        color: $text-color;;
       }
     }
   }
 
   .line {
     margin: 0 10px;
-    border-bottom: 1px solid #2a2a2a;
+    border-bottom: 1px solid $dark-border-color;
     position: relative;
 
     &::before {
@@ -74,5 +90,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .oldPrice{
+    text-decoration: line-through;
+    font-size: 14px;
+    line-height: 22px;
+    padding: 4px 8px;
+    font-weight: 400;
+    color: $gray-text-color;
   }
 }
