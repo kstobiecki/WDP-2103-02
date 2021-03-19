@@ -44,3 +44,12 @@ $footer-claim-bg: $color-black;
 $footer-bg: $color-midGray;
 
 $button-bg: $color-black;
+
+//hover animation
+
+$bg-transition-time: 0.25s;
+$txt-transition-time: 0.25s;
+
+%hover-transition {
+    transition:  color $txt-transition-time, background-color $bg-transition-time;
+}
