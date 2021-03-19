@@ -4,7 +4,21 @@
   background-color: $light-bg;
   border: 1px solid $light-border-color;
   margin-bottom: 2rem;
+  transition:0.25s ease-in-out;
 
+  &:hover {
+    .actions .price> div{
+      background-color: $primary;
+    }
+    .photo .buttons {
+      visibility: visible;
+    }
+  }
+  &:hover{
+    transform:translate(-1px, 2px);
+    box-shadow: -25px 10px 15px -5px rgba(63, 63, 63, 0.349);
+  }
+ 
   .photo {
     position: relative;
     padding: 0;
@@ -26,7 +40,8 @@
     .buttons {
       display: flex;
       justify-content: space-between;
-
+      visibility: hidden;
+      bottom: -50px;
     }
   }
 
@@ -70,6 +85,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .oldPrice{
+    text-decoration: line-through;
+    font-size: 14px;
+    line-height: 22px;
+    padding: 4px 8px;
+    font-weight: 400;
+    color: $gray-text-color;
   }
 }
 img {

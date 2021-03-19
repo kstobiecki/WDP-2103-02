@@ -20,7 +20,9 @@ const ProductBox = ({
   addToFavorites,
   id,
   favorites,
+  oldPrice
 }) => (
+
   <div className={styles.root}>
     <div className={styles.photo}>
       <img src={image} alt={name} />
@@ -60,6 +62,11 @@ const ProductBox = ({
           <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
         </Button>
       </div>
+      <div>
+        {oldPrice !== 0 && (
+          <span className={styles.oldPrice}> it was: ${oldPrice}</span>
+        )}
+      </div>
       <div className={styles.price}>
         <Button noHover variant='small'>
           $ {price}
@@ -79,6 +86,7 @@ ProductBox.propTypes = {
   favorites: PropTypes.bool,
   addToFavorites: PropTypes.func,
   id: PropTypes.string,
-};
+  oldPrice: PropTypes.number,
+
 
 export default ProductBox;
