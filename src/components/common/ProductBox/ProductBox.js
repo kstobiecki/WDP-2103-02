@@ -20,9 +20,8 @@ const ProductBox = ({
   addToFavorites,
   id,
   favorites,
-  oldPrice
+  oldPrice,
 }) => (
-
   <div className={styles.root}>
     <div className={styles.photo}>
       <img src={image} alt={name} />
@@ -87,6 +86,6 @@ ProductBox.propTypes = {
   addToFavorites: PropTypes.func,
   id: PropTypes.string,
   oldPrice: PropTypes.number,
-
+};
 
 export default ProductBox;
