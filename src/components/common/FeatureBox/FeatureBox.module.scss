@@ -63,8 +63,8 @@
 
   &:hover {
     .iconWrapper {
-      color: #ffffff;
-  
+      color: $light-text-color;
+
       &::after {
         background-color: $primary;
         border-color: $primary;
