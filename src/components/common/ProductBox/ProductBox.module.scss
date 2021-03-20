@@ -21,15 +21,10 @@
  
   .photo {
     position: relative;
-    padding: 80% 10px 0 10px;
-    background: {
-      color: $gray-white-bg;
-      size: contain;
-      position: center;
-      repeat: no-repeat;
-    }
+    padding: 0;
     overflow: hidden;
     align-items: flex-end;
+
 
     .sale {
       position: absolute;
@@ -45,8 +40,10 @@
     .buttons {
       display: flex;
       justify-content: space-between;
+
       visibility: hidden;
       bottom: -50px;
+
     }
   }
 
@@ -100,4 +97,11 @@
     font-weight: 400;
     color: $gray-text-color;
   }
+}
+img {
+  position: center;
+  max-height: 250px;
+  background-size: cover;
+  object-fit: cover;
+
 }
