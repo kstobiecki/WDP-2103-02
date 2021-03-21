@@ -1,9 +1,22 @@
 import { connect } from 'react-redux';
 import ProductBox from './ProductBox';
-import { getAllToCompare } from '../../../redux/compareRedux';
+
+import { getAll } from '../../../redux/productsRedux';
+import { compare, getProductsToCompare } from '../../../redux/comparedRedux';
 
 const mapStateToProps = state => ({
-  allComperedProducts: getAllToCompare(state),
+  products: getAll(state),
+  comparison: getProductsToCompare(state),
 });
 
-export default connect(mapStateToProps)(ProductBox);
+const mapDispatchToProps = (dispatch, props) => ({
+  compare: () =>
+    dispatch(
+      compare({
+        id: props.id,
+        ...props,
+      })
+    ),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductBox);
