@@ -40,4 +40,9 @@
     background-color: $button-bg;
     color: $light-text-color;
   }
+
+  &.active {
+    background-color: $button-bg;
+    color: $light-text-color;
+  }
 }
