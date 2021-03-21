@@ -17,10 +17,10 @@ const rwdVPCheck = () => {
   }
 };
 
-const MainLayout = ({ children, setVPMode }) => {
+const MainLayout = ({ children }) => {
+  const setVPMode = () => rwdVPCheck();
   useEffect(() => {
-    const vpMode = setVPMode(rwdVPCheck());
-    window.addEventListener('resize', newMode => vpMode);
+    window.addEventListener('resize', newMode => setVPMode());
   });
   return (
     <div>
