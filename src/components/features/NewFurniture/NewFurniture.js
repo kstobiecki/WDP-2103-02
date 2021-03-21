@@ -10,12 +10,15 @@ class NewFurniture extends React.Component {
     activeCategory: 'bed',
   };
 
-  desktop = {
-    elementsOnPage: 8,
-  };
-
   mobile = {
     elementsOnPage: 1,
+  };
+
+  tablet = {
+    elementsOnPage: 2,
+  };
+  desktop = {
+    elementsOnPage: 8,
   };
 
   handlePageChange(newPage) {
@@ -32,16 +35,25 @@ class NewFurniture extends React.Component {
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
 
-    const pagesCount = Math.ceil(
-      vpMode === 'tablet' || vpMode === 'mobile'
-        ? categoryProducts.length / this.mobile.elementsOnPage
-        : categoryProducts.length / this.desktop.elementsOnPage
-    );
+    const pagesCount =
+      vpMode === 'mobile'
+        ? Math.ceil(categoryProducts.length / this.mobile.elementsOnPage)
+        : vpMode === 'tablet'
+        ? Math.ceil(categoryProducts.length / this.tablet.elementsOnPage)
+        : Math.ceil(categoryProducts.length / this.desktop.elementsOnPage);
 
     const displayElem =
-      vpMode === 'tablet' || vpMode === 'mobile'
+      vpMode === 'mobile'
         ? categoryProducts.slice(activePage, activePage + 1)
-        : categoryProducts.slice(activePage * 8, (activePage + 1) * 8);
+        : vpMode === 'tablet'
+        ? categoryProducts.slice(
+            activePage * this.tablet.elementsOnPage,
+            (activePage + 1) * this.tablet.elementsOnPage
+          )
+        : categoryProducts.slice(
+            activePage * this.desktop.elementsOnPage,
+            (activePage + 1) * this.desktop.elementsOnPage
+          );
 
     const dots = [];
     for (let i = 0; i < pagesCount; i++) {
@@ -86,7 +98,7 @@ class NewFurniture extends React.Component {
           </div>
           <div className='row'>
             {displayElem.map(item => (
-              <div key={item.id} className='col-lg-3 col-12'>
+              <div key={item.id} className={`col-12 col-xl-3 col-lg-6`}>
                 <ProductBox {...item} />
               </div>
             ))}

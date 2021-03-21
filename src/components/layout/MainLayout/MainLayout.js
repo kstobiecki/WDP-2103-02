@@ -19,6 +19,7 @@ const rwdVPCheck = () => {
 
 const MainLayout = ({ children }) => {
   const setVPMode = () => rwdVPCheck();
+
   useEffect(() => {
     window.addEventListener('resize', newMode => setVPMode());
   });
