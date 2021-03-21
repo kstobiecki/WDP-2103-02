@@ -3,16 +3,12 @@ import PropTypes from 'prop-types';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
-import {
-  faStar,
-  faExchangeAlt,
-  faShoppingBasket,
-} from '@fortawesome/free-solid-svg-icons';
+import { faStar, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 import CompareButton from '../CompareButton/CompareButtonContainer';
 
-const ProductBox = ({ id, img, name, price, promo, stars, oldPrice, compare }) => (
+const ProductBox = ({ id, img, name, price, promo, stars, oldPrice }) => (
   <div className={styles.root}>
     <div className={styles.photo}>
       {promo && <div className={styles.sale}>{promo}</div>}
@@ -68,7 +64,6 @@ ProductBox.propTypes = {
   promo: PropTypes.string,
   stars: PropTypes.number,
   oldPrice: PropTypes.number,
-  compare: PropTypes.func,
 };
 
 export default ProductBox;
