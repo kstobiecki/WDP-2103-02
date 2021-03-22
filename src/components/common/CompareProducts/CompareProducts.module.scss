@@ -1,0 +1,44 @@
+@import '../../../styles/settings.scss';
+
+.component {
+    height: fit-content;
+    width: fit-content;
+    max-height: 80px;
+    max-width: 80px;
+    border: 2px solid $light-border-color;
+    margin: $base-padding / 4;
+    display: flex;
+    &:hover .image {
+        visibility: visible;
+    }
+    img {
+        justify-content: center;
+        width: fit-content;
+        height: fit-content;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+}
+
+.image {
+    display: flex;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    max-height: 100%;
+    width: fit-content;
+    height: fit-content;
+    background-color: rgba($dark-bg, 0.6);
+    justify-content: center;
+    line-height: 80px;
+    a {
+        color: $light-text-color;
+        font-size: 1.5rem;
+        &:hover {
+            color: $primary;
+        }
+    }
+}
