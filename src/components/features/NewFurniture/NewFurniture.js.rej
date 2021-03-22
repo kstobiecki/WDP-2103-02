@@ -1,0 +1,11 @@
+diff a/src/components/features/NewFurniture/NewFurniture.js b/src/components/features/NewFurniture/NewFurniture.js	(rejected hunks)
+@@ -35 +34 @@ class NewFurniture extends React.Component {
+-    
++
+@@ -43,3 +42,3 @@ class NewFurniture extends React.Component {
+-    vpMode === 'tablet' || vpMode === 'mobile'
+-      ? categoryProducts.slice(activePage, activePage + 1)
+-      : categoryProducts.slice(activePage * 8, (activePage + 1) * 8);
++      vpMode === 'tablet' || vpMode === 'mobile'
++        ? categoryProducts.slice(activePage, activePage + 1)
++        : categoryProducts.slice(activePage * 8, (activePage + 1) * 8);
