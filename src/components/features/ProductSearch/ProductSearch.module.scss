@@ -25,6 +25,7 @@
       z-index: 0;
     }
 
+
     select {
       -webkit-appearance: none;
       border: 0;
@@ -32,6 +33,11 @@
       padding: 5px 30px 5px 35px;
       position: relative;
       z-index: 1;
+      font-size: 14px;
+      outline: none;
+      &:hover {
+        font-size: 15px;   //fix yarn
+      }
     }
   }
 

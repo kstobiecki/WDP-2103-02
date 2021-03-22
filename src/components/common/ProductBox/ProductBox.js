@@ -20,6 +20,8 @@ const ProductBox = ({
   addToFavorites,
   id,
   favorites,
+
+  compare,
   oldPrice,
 }) => (
   <div className={styles.root}>
@@ -57,7 +59,7 @@ const ProductBox = ({
         >
           <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
         </Button>
-        <Button variant='outline'>
+        <Button variant='outline' active={compare}>
           <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
         </Button>
       </div>
@@ -81,10 +83,11 @@ ProductBox.propTypes = {
   price: PropTypes.number,
   promo: PropTypes.string,
   stars: PropTypes.number,
-  image: PropTypes.string,
   favorites: PropTypes.bool,
   addToFavorites: PropTypes.func,
   id: PropTypes.string,
+  compare: PropTypes.bool,
+  image: PropTypes.string,
   oldPrice: PropTypes.number,
 };
 
