@@ -10,6 +10,17 @@ class NewFurniture extends React.Component {
     activeCategory: 'bed',
   };
 
+  mobile = {
+    elementsOnPage: 1,
+  };
+
+  tablet = {
+    elementsOnPage: 2,
+  };
+  desktop = {
+    elementsOnPage: 8,
+  };
+
   handlePageChange(newPage) {
     this.setState({ activePage: newPage });
   }
@@ -19,11 +30,30 @@ class NewFurniture extends React.Component {
   }
 
   render() {
-    const { categories, products } = this.props;
+    const { categories, products, vpMode } = this.props;
     const { activeCategory, activePage } = this.state;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
-    const pagesCount = Math.ceil(categoryProducts.length / 8);
+
+    const pagesCount =
+      vpMode === 'mobile'
+        ? Math.ceil(categoryProducts.length / this.mobile.elementsOnPage)
+        : vpMode === 'tablet'
+        ? Math.ceil(categoryProducts.length / this.tablet.elementsOnPage)
+        : Math.ceil(categoryProducts.length / this.desktop.elementsOnPage);
+
+    const displayElem =
+      vpMode === 'mobile'
+        ? categoryProducts.slice(activePage, activePage + 1)
+        : vpMode === 'tablet'
+        ? categoryProducts.slice(
+            activePage * this.tablet.elementsOnPage,
+            (activePage + 1) * this.tablet.elementsOnPage
+          )
+        : categoryProducts.slice(
+            activePage * this.desktop.elementsOnPage,
+            (activePage + 1) * this.desktop.elementsOnPage
+          );
 
     const dots = [];
     for (let i = 0; i < pagesCount; i++) {
@@ -67,8 +97,8 @@ class NewFurniture extends React.Component {
             </div>
           </div>
           <div className='row'>
-            {categoryProducts.slice(activePage * 8, (activePage + 1) * 8).map(item => (
-              <div key={item.id} className='col-3'>
+            {displayElem.map(item => (
+              <div key={item.id} className={`col-12 col-xl-3 col-lg-6`}>
                 <ProductBox {...item} />
               </div>
             ))}
@@ -98,6 +128,7 @@ NewFurniture.propTypes = {
       newFurniture: PropTypes.bool,
     })
   ),
+  vpMode: PropTypes.string,
 };
 
 NewFurniture.defaultProps = {
