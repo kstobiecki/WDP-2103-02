@@ -106,32 +106,32 @@ const Footer = ({ children }) => (
           </div>
           <div className={'col text-right ' + styles.socialMedia}>
             <ul>
-              <li>
+              <li className='col-2 col-sm-2v col-md-1'>
                 <a href='#'>
                   <FontAwesomeIcon icon={faTwitter}>Twitter</FontAwesomeIcon>
                 </a>
               </li>
-              <li>
+              <li className='col-2 col-sm-3 col-md-1'>
                 <a href='#'>
                   <FontAwesomeIcon icon={faFacebookF}>Facebook</FontAwesomeIcon>
                 </a>
               </li>
-              <li>
+              <li className='col-2 col-sm-3 col-md-1'>
                 <a href='#'>
                   <FontAwesomeIcon icon={faYoutube}>YouTube</FontAwesomeIcon>
                 </a>
               </li>
-              <li>
+              <li className='col-2 col-sm-3 col-md-1'>
                 <a href='#'>
                   <FontAwesomeIcon icon={faGooglePlusG}>Google Plus</FontAwesomeIcon>
                 </a>
               </li>
-              <li>
+              <li className='col-2 col-sm-3 col-md-1'>
                 <a href='#'>
                   <FontAwesomeIcon icon={faLinkedinIn}>LinkedIn</FontAwesomeIcon>
                 </a>
               </li>
-              <li>
+              <li className='col-2 col-sm-3 col-md-1'>
                 <a href='#'>
                   <FontAwesomeIcon icon={faPinterestP}>Pinterest</FontAwesomeIcon>
                 </a>
