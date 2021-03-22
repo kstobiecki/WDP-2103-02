@@ -11,6 +11,7 @@
   .menu {
     display: flex;
     align-self: stretch;
+    margin-top: -7px;
 
     ul {
       margin: 0;
@@ -35,6 +36,7 @@
       border-top: 4px solid $light-bg;
       font-weight: 500;
       letter-spacing: 1px;
+      height: 85px;
       @extend%hover-transition;
 
       &:hover,
@@ -50,3 +52,137 @@
     }
   }
 }
+
+@media screen and (max-width: 992px) {
+  .root {
+    padding-bottom: 10px;
+    :global(.container) > :global(.row) {
+      // height: 120px;
+      height: auto;
+      flex-direction: column-reverse;
+    }
+
+    .menu {
+      padding-left: 0;
+
+      a {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .root {
+    height: auto;
+    padding-bottom: 0;
+
+    .menu {
+      margin-top: 0;
+
+      a {
+        height: 0;
+
+        &:hover,
+        &.active {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+// @import "../../../styles/settings.scss";
+
+// .root {
+//   box-shadow: 2px 3.464px 6px rgba(1, 2, 2, 0.2);
+//   background-color: $light-bg;
+
+//   :global(.container) > :global(.row) {
+//     height: 84px;
+//   }
+
+//   .menu {
+//     display: flex;
+//     align-self: stretch;
+
+//     .menuWrapper {
+//       margin: 0;
+//       padding: 0;
+//       display: flex;
+
+//       .menuChild {
+//         list-style: none;
+//         display: flex;
+//         align-items: stretch;
+//       }
+//     }
+
+//     a {
+//       color: $text-color;
+//       text-transform: uppercase;
+//       font-size: 12px;
+//       padding: 1rem;
+//       margin: -7px 0 5px 0;
+//       text-decoration: none;
+//       display: flex;
+//       align-items: center;
+//       border-top: 4px solid $light-bg;
+//       font-weight: 500;
+//       letter-spacing: 1px;
+//       @extend%hover-transition;
+//       height: 84px;
+
+//       &:hover,
+//       &.active {
+//         background-color: $primary;
+//         color: $light-text-color;
+//         border-color: $primary;
+//       }
+
+//       &.active {
+//         border-color: $text-color;
+//       }
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 768px) {
+//   .root {
+//     // padding-bottom: 10px;
+//     :global(.container) > :global(.row) {
+//       // height: 120px;
+//       flex-direction: column-reverse;
+//     }
+
+//     .navbarWrapper {
+//       border: 2px solid black;
+//       display: flex;
+//       flex-direction: row;
+//       flex-wrap: wrap;
+//     }
+
+//     .menu {
+//       margin: 0 auto;
+//       width: 80%;
+
+//       a {
+//         // margin-bottom: 10px;
+
+//         margin: 0 auto;
+//         width: 80%;
+
+//       }
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 576) {
+//   .hamburger {
+//     display: block;
+//   }
+// }

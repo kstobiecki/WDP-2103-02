@@ -5,6 +5,7 @@
   display: inline-flex;
   height: 45px;
   color: $text-color;
+  margin-top: 20px;
 
   .category {
     border-right: 1px solid $form-border-color;
@@ -56,6 +57,36 @@
       border: 0;
       background-color: transparent;
       outline: none;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .root {
+    margin-top: 0;
+    margin-bottom: 7px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .root {
+    display: flex;
+    border: none;
+    margin-top: -10px;
+    height: auto;
+
+    .category {
+      display: none;
+    }
+
+    .searchField {
+      margin: 0 auto;
+      margin-top: -30px;
+      padding-left: 90px;
+
+      input {
+        padding-left: 7px;
+      }
     }
   }
 }
