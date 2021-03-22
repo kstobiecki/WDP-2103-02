@@ -18,9 +18,9 @@ const ProductBox = ({
   stars,
   image,
   addToFavorites,
+  removeFromFavorites,
   id,
   favorites,
-
   compare,
   oldPrice,
 }) => (
@@ -54,7 +54,9 @@ const ProductBox = ({
       <div className={styles.outlines}>
         <Button
           className={favorites ? styles.favorites : styles.outlines}
-          onClick={() => addToFavorites({ id })}
+          onClick={() =>
+            favorites ? removeFromFavorites({ id }) : addToFavorites({ id })
+          }
           variant='outline'
         >
           <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
@@ -85,6 +87,7 @@ ProductBox.propTypes = {
   stars: PropTypes.number,
   favorites: PropTypes.bool,
   addToFavorites: PropTypes.func,
+  removeFromFavorites: PropTypes.func,
   id: PropTypes.string,
   compare: PropTypes.bool,
   image: PropTypes.string,
