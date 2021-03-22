@@ -54,9 +54,10 @@ const ProductBox = ({
       <div className={styles.outlines}>
         <Button
           className={favorites ? styles.favorites : styles.outlines}
-          onClick={() =>
-            favorites ? removeFromFavorites({ id }) : addToFavorites({ id })
-          }
+          onClick={e => {
+            e.preventDefault();
+            favorites ? removeFromFavorites({ id }) : addToFavorites({ id });
+          }}
           variant='outline'
         >
           <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
