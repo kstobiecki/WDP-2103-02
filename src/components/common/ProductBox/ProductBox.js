@@ -2,16 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './ProductBox.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faStar,
-  faExchangeAlt,
-  faShoppingBasket,
-} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
+import { faStar, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
+import CompareButton from '../CompareButton/CompareButtonContainer';
 
 const ProductBox = ({
+  id,
   name,
   price,
   promo,
@@ -28,7 +26,7 @@ const ProductBox = ({
       <div className={styles.buttons}>
         <Button variant='small'>Quick View</Button>
         <Button variant='small'>
-          <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
+          <Icon icon={faShoppingBasket}></Icon> ADD TO CART
         </Button>
       </div>
     </div>
@@ -38,9 +36,9 @@ const ProductBox = ({
         {[1, 2, 3, 4, 5].map(i => (
           <a key={i} href='#'>
             {i <= stars ? (
-              <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
+              <Icon icon={faStar}>{i} stars</Icon>
             ) : (
-              <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
+              <Icon icon={farStar}>{i} stars</Icon>
             )}
           </a>
         ))}
@@ -50,11 +48,9 @@ const ProductBox = ({
     <div className={styles.actions}>
       <div className={styles.outlines}>
         <Button variant='outline' active={favorite}>
-          <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
+          <Icon icon={faHeart}>Favorite</Icon>
         </Button>
-        <Button variant='outline' active={compare}>
-          <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
-        </Button>
+        <CompareButton id={id} name={name} img={image} />
       </div>
       <div>
         {oldPrice !== 0 && (
@@ -71,6 +67,8 @@ const ProductBox = ({
 );
 
 ProductBox.propTypes = {
+  id: PropTypes.string,
+  img: PropTypes.string,
   children: PropTypes.node,
   name: PropTypes.string,
   price: PropTypes.number,

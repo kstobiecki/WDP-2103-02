@@ -1,44 +1,31 @@
 @import '../../../styles/settings.scss';
 
 .component {
-    height: fit-content;
-    width: fit-content;
-    max-height: 80px;
-    max-width: 80px;
-    border: 2px solid $light-border-color;
-    margin: $base-padding / 4;
-    display: flex;
-    &:hover .image {
+    border: 1px solid $color-white;
+    display: inline-block;
+    height: 80px;
+    margin: $base-padding;
+    position: relative;
+    width: 80px;
+
+    img {
+        height:  100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    &:hover .imgCompare {
         visibility: visible;
     }
-    img {
-        justify-content: center;
-        width: fit-content;
-        height: fit-content;
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: cover;
+
+    .imgCompare{
+        visibility: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #414141, $alpha: 0.6);
     }
 }
 
-.image {
-    display: flex;
-    visibility: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    max-width: 100%;
-    max-height: 100%;
-    width: fit-content;
-    height: fit-content;
-    background-color: rgba($dark-bg, 0.6);
-    justify-content: center;
-    line-height: 80px;
-    a {
-        color: $light-text-color;
-        font-size: 1.5rem;
-        &:hover {
-            color: $primary;
-        }
-    }
-}
