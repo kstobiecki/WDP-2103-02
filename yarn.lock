@@ -9877,6 +9877,13 @@ react-scripts@3.1.2:
   optionalDependencies:
     fsevents "2.0.7"
 
+react-swipe-component@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-swipe-component/-/react-swipe-component-3.0.0.tgz#13b11d8cfd22fbe00af9b4f3a4a64d7af70960f5"
+  integrity sha512-iE8qw7OHg2cMWmurWJC/EFj6LgB70AA+eRTbP4NZfdEF2qRVaC03cK2PxcfuB/lwz56slIntjFRwcYFAoYIrbQ==
+  dependencies:
+    react "^16.8.1"
+
 react-test-renderer@^16.0.0-0, react-test-renderer@^16.9.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.14.0.tgz#e98360087348e260c56d4fe2315e970480c228ae"
@@ -9887,6 +9894,7 @@ react-test-renderer@^16.0.0-0, react-test-renderer@^16.9.0:
     react-is "^16.8.6"
     scheduler "^0.19.1"
 
+<<<<<<< HEAD
 react-transition-group@^4.4.1:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.1.tgz#63868f9325a38ea5ee9535d828327f85773345c9"
@@ -9898,6 +9906,9 @@ react-transition-group@^4.4.1:
     prop-types "^15.6.2"
 
 react@^16.9.0:
+=======
+react@^16.8.1, react@^16.9.0:
+>>>>>>> 2c71f9a (add Swipeable component&handling)
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
   integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
