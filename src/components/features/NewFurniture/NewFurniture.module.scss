@@ -100,4 +100,13 @@
       }
     }
   }
+
+  .fadeout {
+    opacity: 0;
+    transition: 0.5s;
+  }
+
+  .fadein {
+    transition: 0.5s;
+  }
 }
