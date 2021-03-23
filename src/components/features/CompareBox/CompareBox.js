@@ -4,7 +4,7 @@ import style from './CompareBar.module.scss';
 import Button from '../../common/Button/Button';
 import ProductCompare from '../../common/ProductCompare/ProductCompareContainer';
 
-const CompareBar = ({ compare }) => {
+const CompareBox = ({ compare }) => {
   return compare.lenght > 0 ? (
     <div className={style.component}>
       <div>
@@ -19,8 +19,8 @@ const CompareBar = ({ compare }) => {
   );
 };
 
-CompareBar.propTypes = {
+CompareBox.propTypes = {
   compare: PropTypes.array,
 };
 
-export default CompareBar;
+export default CompareBox;
