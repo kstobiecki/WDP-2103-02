@@ -1,11 +1,28 @@
 @import '../../../styles/settings.scss';
 
 .component {
-    width: 80vw;
-    height: 15vh;
-    max-width: 1000px;
-    max-height: 120px;
-    display: block;
+    align-items: center;
+    background-color: $footer-claim-bg;
+    border-top: 1px solid $light-border-color;
+    bottom: 0;
+    display: flex;
+    height: 90px;;
+    justify-content: space-between;
+    padding: $base-padding / 4;
     position: fixed;
+    width: 100vw;
     z-index: 2;
+}
+
+.button {
+  background: $header-topbar-bg;
+  border-radius: 15px;
+  color: $light-text-color;
+  display: block;
+  height: 50%;
+  margin-right: $base-padding * 2;
+  padding: ($base-padding / 4) ($base-padding / 2);
+  &:hover {
+    background: $primary;
+  }
 }
