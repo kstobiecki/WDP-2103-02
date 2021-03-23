@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './ProductBox.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import {
   faStar,
   faExchangeAlt,
@@ -19,6 +19,7 @@ const ProductBox = ({
   image,
   addToFavorites,
   removeFromFavorites,
+  addToCompare,
   id,
   favorites,
   compare,
@@ -31,7 +32,7 @@ const ProductBox = ({
       <div className={styles.buttons}>
         <Button variant='small'>Quick View</Button>
         <Button variant='small'>
-          <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
+          <Icon icon={faShoppingBasket}></Icon> ADD TO CART
         </Button>
       </div>
     </div>
@@ -41,9 +42,9 @@ const ProductBox = ({
         {[1, 2, 3, 4, 5].map(i => (
           <a key={i} href='#'>
             {i <= stars ? (
-              <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
+              <Icon icon={faStar}>{i} stars</Icon>
             ) : (
-              <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
+              <Icon icon={farStar}>{i} stars</Icon>
             )}
           </a>
         ))}
@@ -60,10 +61,10 @@ const ProductBox = ({
           }}
           variant='outline'
         >
-          <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
+          <Icon icon={faHeart}>Favorite</Icon>
         </Button>
-        <Button variant='outline' active={compare}>
-          <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
+        <Button onClick={() => addToCompare()} variant={'outline'}>
+          <Icon icon={faExchangeAlt}>Add to compare</Icon>
         </Button>
       </div>
       <div>
@@ -89,8 +90,9 @@ ProductBox.propTypes = {
   favorites: PropTypes.bool,
   addToFavorites: PropTypes.func,
   removeFromFavorites: PropTypes.func,
+  addToCompare: PropTypes.func,
   id: PropTypes.string,
-  compare: PropTypes.bool,
+  compare: PropTypes.array,
   image: PropTypes.string,
   oldPrice: PropTypes.number,
 };

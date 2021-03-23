@@ -1,0 +1,11 @@
+@import '../../../styles/settings.scss';
+
+.component {
+    width: 80vw;
+    height: 15vh;
+    max-width: 1000px;
+    max-height: 120px;
+    display: block;
+    position: fixed;
+    z-index: 2;
+}
