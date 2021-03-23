@@ -18,7 +18,7 @@
     transform:translate(-1px, 2px);
     box-shadow: -25px 10px 15px -5px rgba(63, 63, 63, 0.349);
   }
- 
+
   .photo {
     position: relative;
     padding: 0;
@@ -40,10 +40,8 @@
     .buttons {
       display: flex;
       justify-content: space-between;
-
       visibility: hidden;
       bottom: -50px;
-
     }
   }
 
@@ -106,5 +104,7 @@ img {
   max-width: 100%;
   max-height: 250px;
   object-fit: cover;
-
+}
+.favorites {
+  background-color: $primary;
 }

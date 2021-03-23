@@ -16,9 +16,12 @@ const ProductBox = ({
   price,
   promo,
   stars,
-  favorite,
-  compare,
   image,
+  addToFavorites,
+  removeFromFavorites,
+  id,
+  favorites,
+  compare,
   oldPrice,
 }) => (
   <div className={styles.root}>
@@ -49,7 +52,14 @@ const ProductBox = ({
     <div className={styles.line}></div>
     <div className={styles.actions}>
       <div className={styles.outlines}>
-        <Button variant='outline' active={favorite}>
+        <Button
+          className={favorites ? styles.favorites : styles.outlines}
+          onClick={e => {
+            e.preventDefault();
+            favorites ? removeFromFavorites({ id }) : addToFavorites({ id });
+          }}
+          variant='outline'
+        >
           <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
         </Button>
         <Button variant='outline' active={compare}>
@@ -76,7 +86,10 @@ ProductBox.propTypes = {
   price: PropTypes.number,
   promo: PropTypes.string,
   stars: PropTypes.number,
-  favorite: PropTypes.bool,
+  favorites: PropTypes.bool,
+  addToFavorites: PropTypes.func,
+  removeFromFavorites: PropTypes.func,
+  id: PropTypes.string,
   compare: PropTypes.bool,
   image: PropTypes.string,
   oldPrice: PropTypes.number,
