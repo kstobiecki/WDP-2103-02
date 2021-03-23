@@ -17,7 +17,7 @@ const Footer = ({ children }) => (
     <div className={styles.footerMenu}>
       <div className='container'>
         <div className='row'>
-          <div className='col'>
+          <div className='col-12 col-sm-6 col-lg-3'>
             <div className={styles.menuWrapper}>
               <h6>Information</h6>
               <ul>
@@ -36,7 +36,7 @@ const Footer = ({ children }) => (
               </ul>
             </div>
           </div>
-          <div className='col'>
+          <div className='col-12 col-sm-6 col-lg-3'>
             <div className={styles.menuWrapper}>
               <h6>My account</h6>
               <ul>
@@ -55,7 +55,7 @@ const Footer = ({ children }) => (
               </ul>
             </div>
           </div>
-          <div className='col'>
+          <div className='col-12 col-sm-6 col-lg-3'>
             <div className={styles.menuWrapper}>
               <h6>Information</h6>
               <ul>
@@ -74,7 +74,7 @@ const Footer = ({ children }) => (
               </ul>
             </div>
           </div>
-          <div className='col'>
+          <div className='col-12 col-sm-6 col-lg-3'>
             <div className={styles.menuWrapper}>
               <h6>Orders</h6>
               <ul>
@@ -100,38 +100,38 @@ const Footer = ({ children }) => (
     <div className={styles.bottomBar}>
       <div className='container'>
         <div className='row align-items-center'>
-          <div className='col'></div>
-          <div className={'col text-center ' + styles.copyright}>
+          <div className='col col-sm-12 col-xl text-center'></div>
+          <div className={'col text-center' + styles.copyright}>
             <p>©Copyright 2016 Bazar | All Rights Reserved</p>
           </div>
           <div className={'col text-right ' + styles.socialMedia}>
             <ul>
-              <li>
+              <li className='col-2 col-sm-2v col-md-1'>
                 <a href='#'>
                   <FontAwesomeIcon icon={faTwitter}>Twitter</FontAwesomeIcon>
                 </a>
               </li>
-              <li>
+              <li className='col-2 col-sm-3 col-md-1'>
                 <a href='#'>
                   <FontAwesomeIcon icon={faFacebookF}>Facebook</FontAwesomeIcon>
                 </a>
               </li>
-              <li>
+              <li className='col-2 col-sm-3 col-md-1'>
                 <a href='#'>
                   <FontAwesomeIcon icon={faYoutube}>YouTube</FontAwesomeIcon>
                 </a>
               </li>
-              <li>
+              <li className='col-2 col-sm-3 col-md-1'>
                 <a href='#'>
                   <FontAwesomeIcon icon={faGooglePlusG}>Google Plus</FontAwesomeIcon>
                 </a>
               </li>
-              <li>
+              <li className='col-2 col-sm-3 col-md-1'>
                 <a href='#'>
                   <FontAwesomeIcon icon={faLinkedinIn}>LinkedIn</FontAwesomeIcon>
                 </a>
               </li>
-              <li>
+              <li className='col-2 col-sm-3 col-md-1'>
                 <a href='#'>
                   <FontAwesomeIcon icon={faPinterestP}>Pinterest</FontAwesomeIcon>
                 </a>
