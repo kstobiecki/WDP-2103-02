@@ -4,9 +4,11 @@
     flex-direction: column;
     width: 150px;
     margin-right: 20px;
-    &:hover .icon{
+    &:hover {
+        .icon{
         display: block;
     }
+  }
 }
 
 .iconContainer {

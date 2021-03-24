@@ -12,8 +12,8 @@ const ProductCompare = ({ products, setCompare }) => {
   return (
     <div className={style.compareFixedContainer}>
       <div className='style.compareBox'>
-        {products.map(cprItem => (
-          <CompareBox key={cprItem.id} setCompare={setCompare} {...cprItem} />
+        {products.map(item => (
+          <CompareBox key={item.id} setCompare={setCompare} {...item} />
         ))}
         <div className={style.btn}>
           <Button className={style.compareBtn}>Compare</Button>

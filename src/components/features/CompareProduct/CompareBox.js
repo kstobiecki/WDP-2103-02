@@ -5,7 +5,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import style from './CompareBox.module.scss';
 import Button from '../../common/Button/Button';
 
-const ProductsToCompareBox = ({ name, id, image, setCompare, compare }) => (
+const CompareBox = ({ name, id, image, setCompare, compare }) => (
   <div className={style.compareContainer}>
     <div className={style.iconContainer}>
       <Button
@@ -23,7 +23,7 @@ const ProductsToCompareBox = ({ name, id, image, setCompare, compare }) => (
   </div>
 );
 
-ProductsToCompareBox.propTypes = {
+CompareBox.propTypes = {
   image: PropTypes.string,
   name: PropTypes.string,
   id: PropTypes.string,
@@ -31,4 +31,4 @@ ProductsToCompareBox.propTypes = {
   compare: PropTypes.bool,
 };
 
-export default ProductsToCompareBox;
+export default CompareBox;
