@@ -8,6 +8,7 @@ class NewFurniture extends React.Component {
   state = {
     activePage: 0,
     activeCategory: 'bed',
+    isFading: false,
   };
 
   mobile = {
@@ -22,16 +23,28 @@ class NewFurniture extends React.Component {
   };
 
   handlePageChange(newPage) {
-    this.setState({ activePage: newPage });
+    this.setState({ isFading: true });
+    setTimeout(() => {
+      this.setState({ activePage: newPage });
+    }, 500);
+    setTimeout(() => {
+      this.setState({ isFading: false });
+    }, 500);
   }
 
   handleCategoryChange(newCategory) {
-    this.setState({ activeCategory: newCategory });
+    this.setState({ isFading: true });
+    setTimeout(() => {
+      this.setState({ activeCategory: newCategory });
+    }, 500);
+    setTimeout(() => {
+      this.setState({ isFading: false });
+    }, 500);
   }
 
   render() {
     const { categories, products, vpMode } = this.props;
-    const { activeCategory, activePage } = this.state;
+    const { activeCategory, activePage, isFading } = this.state;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
 
@@ -96,7 +109,9 @@ class NewFurniture extends React.Component {
               </div>
             </div>
           </div>
-          <div className='row'>
+          <div
+            className={'row' + (isFading ? ' ' + styles.fadeout : ' ' + styles.fadein)}
+          >
             {displayElem.map(item => (
               <div key={item.id} className={`col-12 col-xl-3 col-lg-6`}>
                 <ProductBox {...item} />
