@@ -12,7 +12,7 @@ const ProductBox = ({
   name,
   price,
   promo,
-  // stars,
+  stars,
   image,
   addToFavorites,
   removeFromFavorites,
@@ -20,7 +20,7 @@ const ProductBox = ({
   favorites,
   compare,
   oldPrice,
-  // userStars,
+  userStars,
 }) => (
   <div className={styles.root}>
     <div className={styles.photo}>
@@ -29,14 +29,14 @@ const ProductBox = ({
       <div className={styles.buttons}>
         <Button variant='small'>Quick View</Button>
         <Button variant='small'>
-          <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
+          <FontAwesomeIcon icon={faShoppingBasket}> </FontAwesomeIcon> ADD TO CART
         </Button>
       </div>
     </div>
     <div className={styles.content}>
       <h5>{name}</h5>
 
-      <Stars />
+      <Stars id={id} stars={stars} userStars={userStars} />
     </div>
     <div className={styles.line}></div>
     <div className={styles.actions}>

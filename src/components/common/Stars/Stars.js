@@ -6,23 +6,51 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 
 const Stars = ({ id, stars, userStars, ...props }) => {
-  const [hover] = useState(null);
+  const [hover, setHover] = useState(null);
   return (
     <div className={styles.stars}>
       {[1, 2, 3, 4, 5].map(i => {
         let count = stars;
         if (userStars) {
-          count = stars;
+          count = userStars;
         }
         if (hover) {
           count = hover;
         }
         return (
-          <a key={1} href={'#'} className={userStars ? styles.userStars : ''}>
+          <a key={1} href='#' className={userStars ? styles.userStars : ''}>
             {i <= count ? (
-              <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
+              <FontAwesomeIcon
+                onMouseOver={() => {
+                  setHover(i);
+                }}
+                onMouseLeave={() => {
+                  setHover(null);
+                }}
+                onClick={event => {
+                  event.preventDefault();
+                  return props.changeUserStars(id, i);
+                }}
+                icon={faStar}
+              >
+                {i} stars
+              </FontAwesomeIcon>
             ) : (
-              <FontAwesomeIcon icon={farStar}></FontAwesomeIcon>
+              <FontAwesomeIcon
+                onMouseOver={() => {
+                  setHover(i);
+                }}
+                onMouseLeave={() => {
+                  setHover(null);
+                }}
+                onClick={event => {
+                  event.preventDefault();
+                  return props.changeUserStars(id, i);
+                }}
+                icon={farStar}
+              >
+                {i} stars
+              </FontAwesomeIcon>
             )}
           </a>
         );
@@ -35,6 +63,7 @@ Stars.propTypes = {
   stars: PropTypes.number,
   id: PropTypes.string,
   userStars: PropTypes.number,
+  changeUserStars: PropTypes.func,
 };
 
 export default Stars;

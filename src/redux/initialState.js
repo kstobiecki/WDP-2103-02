@@ -13,7 +13,7 @@ const initialState = {
       category: 'bed',
       price: 30,
       oldPrice: 45,
-      stars: 2,
+      stars: 4,
       promo: 'sale',
       newFurniture: true,
       favorites: true,
