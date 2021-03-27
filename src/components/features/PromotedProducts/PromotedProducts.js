@@ -16,10 +16,8 @@ import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons'
 
 const PromotedProducts = ({
   name,
-  price,
-  promo,
-  stars,
   image,
+  stars,
   addToFavorites,
   removeFromFavorites,
   id,
@@ -42,6 +40,7 @@ const PromotedProducts = ({
                 </div>
               </div>
               <div className={styles.promotedImage}>
+                <img src={image} alt={name} />
                 <div className={styles.addToCard}>
                   <Button variant='small' className={styles.addToCardButton}>
                     <FontAwesomeIcon
@@ -71,7 +70,7 @@ const PromotedProducts = ({
                 </div>
               </div>
               <div className={styles.content}>
-                <h5>Aenean Ru Bristique</h5>
+                <h5>Aenean-ru-bristique-1</h5>
                 <div className={styles.stars}>
                   {[1, 2, 3, 4, 5].map(i => (
                     <a key={i} href='#'>
@@ -120,19 +119,19 @@ const PromotedProducts = ({
           <div className='col-md-8'>
             <div className={styles.bannerWrapper}>
               <div className={styles.overaly}></div>
-              <h1>INDOOR</h1>
-              <h1>FURNITURE</h1>
+              <div className={styles.titles}>
+                <h1>INDOOR</h1>
+                <h1>FURNITURE</h1>
+              </div>
               <h4>SAVE UP TO 50% OF ALL FURNITURE</h4>
+              <Button className={styles.buttonWhite}>SHOP NOW</Button>
               <div className={styles.buttons}>
-                <Button className={styles.buttonWhite}>SHOP NOW</Button>
-                <div className={styles.buttons}>
-                  <Button variant='small'>
-                    <FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon>
-                  </Button>
-                  <Button variant='small'>
-                    <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>
-                  </Button>
-                </div>
+                <Button className={styles.buttonArrow}>
+                  <FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon>
+                </Button>
+                <Button className={styles.buttonArrow}>
+                  <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>
+                </Button>
               </div>
             </div>
           </div>

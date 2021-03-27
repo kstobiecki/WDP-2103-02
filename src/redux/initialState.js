@@ -1,5 +1,3 @@
-import { faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';
-
 const initialState = {
   categories: [
     { id: 'bed', name: 'Bed' },
