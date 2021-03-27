@@ -33,12 +33,20 @@ const TopBar = () => (
           <ul>
             <li>
               <a href='#'>
-                <FontAwesomeIcon className={styles.icon} icon={faUser} /> Login
+                <FontAwesomeIcon
+                  className={'d-none d-md-inline pl-1' + styles.icon}
+                  icon={faUser}
+                />
+                <span className={'px-2'}>Login</span>
               </a>
             </li>
             <li>
               <a href='#'>
-                <FontAwesomeIcon className={styles.icon} icon={faLock} /> Register
+                <FontAwesomeIcon
+                  className={'d-none d-md-inline pl-1' + styles.icon}
+                  icon={faLock}
+                />
+                <span className={'px-2'}>Register</span>
               </a>
             </li>
             <li>

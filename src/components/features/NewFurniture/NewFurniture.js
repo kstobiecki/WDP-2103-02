@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './NewFurniture.module.scss';
-import ProductBox from '../../common/ProductBox/ProductBoxContainer';
+import ProductBox from '../../common/ProductBox/ProductBox';
+import Swipeable from '../../common/Swipeable/Swipeable';
 
 class NewFurniture extends React.Component {
   state = {
@@ -109,15 +110,21 @@ class NewFurniture extends React.Component {
               </div>
             </div>
           </div>
-          <div
-            className={'row' + (isFading ? ' ' + styles.fadeout : ' ' + styles.fadein)}
+          <Swipeable
+            itemsCount={pagesCount}
+            activeItem={this.state.activePage}
+            swipeAction={this.handlePageChange.bind(this)}
           >
-            {displayElem.map(item => (
-              <div key={item.id} className={`col-12 col-xl-3 col-lg-6`}>
-                <ProductBox {...item} />
-              </div>
-            ))}
-          </div>
+            <div className='row'>
+              {categoryProducts
+                .slice(activePage * 8, (activePage + 1) * 8)
+                .map(item => (
+                  <div key={item.id} className='col-6 col-xl-3 col-lg-4'>
+                    <ProductBox {...item} />
+                  </div>
+                ))}
+            </div>
+          </Swipeable>
         </div>
       </div>
     );

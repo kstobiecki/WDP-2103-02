@@ -1,6 +1,8 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
+import Promotion from '../../features/Promotion/Promotion';
+
 import styles from './Homepage.module.scss';
 
 import FeatureBoxes from '../../features/FeatureBoxes/FeatureBoxes';
@@ -11,6 +13,7 @@ const Homepage = () => (
   <div className={styles.root}>
     <PromotedProducts />
     <FeatureBoxes />
+    <Promotion />
     <NewFurniture />
   </div>
 );

@@ -9877,6 +9877,13 @@ react-scripts@3.1.2:
   optionalDependencies:
     fsevents "2.0.7"
 
+react-swipe-component@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-swipe-component/-/react-swipe-component-3.0.0.tgz#13b11d8cfd22fbe00af9b4f3a4a64d7af70960f5"
+  integrity sha512-iE8qw7OHg2cMWmurWJC/EFj6LgB70AA+eRTbP4NZfdEF2qRVaC03cK2PxcfuB/lwz56slIntjFRwcYFAoYIrbQ==
+  dependencies:
+    react "^16.8.1"
+
 react-test-renderer@^16.0.0-0, react-test-renderer@^16.9.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.14.0.tgz#e98360087348e260c56d4fe2315e970480c228ae"
