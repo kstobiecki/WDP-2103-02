@@ -9,37 +9,15 @@ import { faQuoteRight } from '@fortawesome/free-solid-svg-icons';
 class Feedback extends React.Component {
   state = {
     activePage: 0,
-    isUnmounted: false,
   };
-
-  unmountTrue() {
-    this.setState({ isUnmounted: true });
-  }
-
-  unmountFalse() {
-    setTimeout(() => this.setState({ isUnmounted: false }), 500);
-  }
-
-  handlePageChange = newPage => {
-    this.unmountTrue();
-    setTimeout(() => this.setState({ activePage: newPage }), 500);
-    this.unmountFalse();
-  };
-
   render() {
     const { activePage } = this.state;
     const { opinions } = this.props;
-
     const dots = [];
     for (let i = 0; i < 3; i++) {
       dots.push(
         <li key={i}>
-          <a
-            onClick={() => this.handlePageChange(i)}
-            className={i === activePage && styles.active}
-          >
-            page {i}
-          </a>
+          <a className={i === activePage && styles.active}>page {i}</a>
         </li>
       );
     }
