@@ -483,6 +483,33 @@ const initialState = {
   cart: {
     products: [],
   },
+
+  opinions: [
+    {
+      name: 'Alex Smile',
+      image:
+        'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      profession: 'Furniture client',
+      opinion:
+        'Curabitur in metus eu erat varius imperdiet. Phasellus sed orci dignissim dui porta dignissim. ',
+    },
+    {
+      name: 'Victoria Glasses',
+      image:
+        'https://images.pexels.com/photos/1845534/pexels-photo-1845534.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      profession: 'Furniture collector',
+      opinion:
+        'Morbi viverra posuere blandit. Quisque eu hendrerit ligula. Fusce ex sapien, dignissim vel libero faucibus, aliquam vestibulum purus. Donec posuere nulla sit amet vestibulum iaculis. Maecenas a aliquam urna. ',
+    },
+    {
+      name: 'Jossi King',
+      image:
+        'https://images.pexels.com/photos/6012304/pexels-photo-6012304.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      profession: 'Designer',
+      opinion:
+        'Aliquam ac mauris id neque finibus tempor. Vivamus tempus a nibh sed aliquam. Curabitur in metus eu erat varius imperdiet. Phasellus sed orci dignissim dui porta dignissim. Integer nec luctus enim. ',
+    },
+  ],
 };
 
 export default initialState;
