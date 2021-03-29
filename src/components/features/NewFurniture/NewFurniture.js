@@ -5,7 +5,6 @@ import styles from './NewFurniture.module.scss';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import Swipeable from '../../common/Swipeable/Swipeable';
 
-
 class NewFurniture extends React.Component {
   state = {
     activePage: 0,
