@@ -1,14 +1,20 @@
 @import "../../../styles/settings.scss";
 
+@mixin decor {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
 .root {
   margin-bottom: 30px;
-
   .header {
     position: relative;
     margin-bottom: 30px;
-    border-bottom: 4px solid $gallery-header-border-color;
+    border-bottom: 4px solid $gallery-header-border;
     h3 {
-      color: $primary;
+      color: $gallery-header;
       text-transform: uppercase;
       font-size: 20px;
       line-height: 38px;
@@ -21,57 +27,57 @@
       bottom: -4px;
       left: 0;
       width: 45px;
-      border-bottom: 4px solid $primary;
+      border-bottom: 4px solid $gallery-header-before;
     }
   }
-
   .menu {
     text-align: center;
-      ul {
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      li {
         display: flex;
-        justify-content: space-between;
-        list-style: none;
         margin: 0;
-        padding: 0;
-        li {
-          background-color: $gallery-menu-item-bg-color;
-          border: 1px solid $gallery-menu-item-border-color;
-          display: flex;
-          font-weight: 600;
-          justify-content: center;
-          margin: 0;
-          width: 25%;
-          a {
-            color: $gallery-menu-item-link-color;
-            display: block;
-            font-size: 16px;
-            padding: 15px;
-            position: relative;
-            text-decoration: none;
-            text-transform: uppercase;
-            width: 100%;
-            &.active, &:hover {
-              background-color: $gallery-menu-item-link-hover-color;
-              &::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;  border-bottom: 4px solid $primary;
-              }
+        font-weight: 600;
+        background-color: $gallery-link-bg;
+        border: 1px solid $gallery-link-border;
+        width: 25%;
+        justify-content: center;
+        a {
+          color: $gallery-link;
+          position: relative;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-size: 16px;
+          padding: 15px;
+          display: block;
+          width: 100%;
+          &.active, &:hover {
+            background-color: $gallery-link-active-bg;
+            &::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              border-bottom: 4px solid $gallery-link-active-border;
             }
           }
         }
       }
     }
-
+  }
   .product {
+    display: flex;
     position: relative;
-    width: 100%;
-    height: 100%;
+    height: 450px;
+    align-items: stretch;
     img {
-      position: relative;
-      height: 400px;
+      position: absolute;
+      max-height: 100%;
     }
     .buttons {
       z-index: 1;
@@ -82,23 +88,20 @@
       justify-content: center;
       width: 35px;
       margin-left: 10px;
-      top: 0;
-      left: 0;
       .icon {
-        border: 1px solid $gallery-icons-default-color;
-        color: $gallery-icons-default-color;
+        border: 1.5px solid $dark-border-color;
+        color: $text-color;
         width: 35px;
         height: 35px;
         padding: 8px;
-        margin-bottom: 3px;
+        margin-bottom: 5px;
         &:hover{
           color: $primary;
           border-color: $primary;
+          cursor: pointer;
         }
       }
-
     }
-
     .content {
       text-align: center;
       z-index: 1;
@@ -106,31 +109,23 @@
       padding: 15px;
       right: 5px;
       bottom: 25px;
-      background-color: $light-bg;
+      background-color: $gallery-content-bg;
       box-shadow: 0px 6px 9px 1px rgba(0,0,0,0.35);
-
-      .triangleTopLeft {
-        position: absolute;
+      .decorTopLeft {
+        @include decor();
         top: 0;
         left: 0;
-        width: 0;
-        height: 0;
-        border-style: solid;
         border-width: 20px 20px 0 0;
-        border-color: $dark-border-color transparent transparent transparent;
+        border-color: $gallery-triangle transparent transparent transparent;
       }
-
-      .triangleBottomRight {
-        position: absolute;
+      .decorBottomRight {
+        @include decor();
         right: 0;
         bottom: 0;
         width: 0;
-        height: 0;
-        border-style: solid;
         border-width: 0 0 20px 20px;
-        border-color: transparent transparent $dark-border-color transparent;
+        border-color: transparent transparent $gallery-triangle transparent;
       }
-
       h5 {
         color: $text-color;
         font-size: 16px;
@@ -142,6 +137,7 @@
         a {
           text-decoration: none;
           color: $text-color;
+          cursor: pointer;
         }
       }
 
@@ -149,23 +145,26 @@
         position: absolute;
         top: 0;
         left: 0;
-        transform: translate(50%, -90%);
-        background-color: $gray-bg;
-        padding: 25px;
-        height: 100px;
-        width: 100px;
+        background-color: $gallery-price-bg;
         border-radius: 50%;
         display: flex;
         flex-direction: column;
+        height: 120px;
         justify-content: center;
+        padding: 25px;
+        transform: translate(40%, -80%);
+        width: 120px;
 
         h3, h5 {
           margin: 0;
-          color:  $text-color;
+          color: $gallery-price;
         }
-
+        h3{
+          font-size: 20px;
+        }
         h5 {
           text-decoration: line-through;
+          font-size: 14px;
         }
       }
     }
@@ -175,7 +174,7 @@
     display: flex;
     padding: 5px;
     justify-content: space-around;
-    border: 1px solid $gray-border-color;
+    border: 1px solid $gallery-link-border;
 
     .prev, .next {
       width: 20px;
@@ -196,37 +195,55 @@
       display: flex;
       justify-content: space-around;
       width: 100%;
-
-      .slidePic {
+      .slidePicture {
         width: 75px;
-        height: 75px;
-        object-fit: cover;
-        margin: 2px;
-        position: relative;
-        opacity: 0.5;
         flex: 1;
-
+        height: 75px;
+        margin: 2px;
+        object-fit: cover;
+        opacity: 0.5;
+        position: relative;
         &.active {
           opacity: 1;
         }
       }
     }
   }
-  .staticPicture {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    img {
-      position: relative;
-      width: 100%;
-      height: 500px;
 
+  .picture {
+    position: relative;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      max-height: 100%;
+      object-fit:cover;
     }
-    .staticPictureDetails {
+    .shopNowBtn {
+      background-color: $color-green;
+      color: $light-text-color;
+      text-transform: uppercase;
+      padding: $base-padding;
+      margin-top: 20px;
+    }
+    .pictureDetails {
       position: absolute;
       top: 50px;
-      left: 30px;
-
+      left: 75px;
+      h3 {
+        text-transform: uppercase;
+        span {
+          color: $gallery-picture;
+          font-size: 3rem;
+          font-weight: bold;
+        }
+      }
+      h1 {
+        color: $gallery-header;
+        font-weight: bold;
+        margin-bottom: 50px;
+      }
     }
   }
 }

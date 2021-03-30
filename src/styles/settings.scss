@@ -52,12 +52,22 @@ $nextPrev-color: $color-white;
 
 //gallery colors var's
 
-$gallery-header-border-color: $color-grayWhite-darker;
-$gallery-menu-item-bg-color: $color-white;
-$gallery-menu-item-border-color: $color-gray;
-$gallery-menu-item-link-color: $color-black;
-$gallery-menu-item-link-hover-color:$color-grayWhite-darker;
-$gallery-icons-default-color: $color-black;
+$gallery-content-bg: $color-white;
+$gallery-header-before: $primary;
+$gallery-header-border: $color-grayWhite-darker;
+$gallery-header: $primary;
+$gallery-link-active-bg: $color-grayWhite-darker;
+$gallery-link-active-border: $primary;
+$gallery-link-active: $primary;
+$gallery-link-bg: $color-white;
+$gallery-link-border: $color-gray;
+$gallery-link: $color-black;
+$gallery-picture: $color-green;
+$gallery-price-bg: $color-gray;
+$gallery-price: $color-grayWhite-darker;
+$gallery-triangle: $color-black;
+$nextPrev-bg: $color-black;
+$nextPrev-color: $color-white;
 
 
 //hover animation
