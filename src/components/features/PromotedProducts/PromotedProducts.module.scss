@@ -157,9 +157,9 @@
   }
 
   .bannerWrapper {
-    background-image: url('https://images.pexels.com/photos/276583/pexels-photo-276583.jpeg?cs=srgb&dl=pexels-pixabay-276583.jpg&fm=jpg');
-    background-size: cover;
-    background-position-y: 70%;
+    // background-image: url('https://images.pexels.com/photos/276583/pexels-photo-276583.jpeg?cs=srgb&dl=pexels-pixabay-276583.jpg&fm=jpg');
+    // background-size: cover;
+    // background-position-y: 70%;
     height: 100%;
     position: relative;
     padding-top: 1px;
@@ -260,4 +260,13 @@
       }
     }
   }
+}
+
+.fadeout {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.fadein {
+  transition: 0.5s;
 }

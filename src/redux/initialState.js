@@ -6,6 +6,53 @@ const initialState = {
     { id: 'table', name: 'Table' },
     { id: 'dining', name: 'Dining' },
   ],
+  promotedProducts: [
+    {
+      id: 'aenean-ru-bristique-1',
+      name: 'Aenean Ru Bristique 1',
+      category: 'bed',
+      price: 30,
+      oldPrice: 45,
+      stars: 4,
+      promo: 'sale',
+      newFurniture: true,
+      favorites: true,
+      compare: true,
+      observe: true,
+      image:
+        'https://images.pexels.com/photos/276583/pexels-photo-276583.jpeg?cs=srgb&dl=pexels-pixabay-276583.jpg&fm=jpg',
+    },
+    {
+      id: 'aenean-ru-bristique-2',
+      name: 'Aenean Ru Bristique 2',
+      category: 'bed',
+      price: 30,
+      oldPrice: 45,
+      stars: 2,
+      promo: 'sale',
+      newFurniture: true,
+      favorites: false,
+      observe: true,
+      image:
+        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1134&q=80',
+    },
+    {
+      id: 'aenean-ru-bristique-3',
+      name: 'Aenean Ru Bristique 3',
+      category: 'bed',
+      price: 30,
+      oldPrice: 0,
+      stars: 2,
+      userStars: 4,
+      promo: 'sale',
+      newFurniture: true,
+      favorites: false,
+      compare: true,
+      observe: true,
+      image:
+        'https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1298&q=80',
+    },
+  ],
   promotion: [
     {
       title: 'Guest Room',
