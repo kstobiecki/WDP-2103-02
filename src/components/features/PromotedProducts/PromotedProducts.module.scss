@@ -1,0 +1,263 @@
+@import "../../../styles/settings.scss";
+
+.root {
+  height: 300px;
+  margin-bottom: 160px;
+
+  .dealsWrapper {
+    border: 1px solid $light-border-color;
+    .deals {
+      background: $color-black;
+      display: flex;
+      justify-content: space-between;
+
+      h3 {
+        color: $color-white;
+        padding: 15px 0 0 20px;
+        display: inline-block;
+      }
+
+      .dots {
+        display: inline-block;
+        padding: 15px 20px 0 0;
+
+        .dot {
+          display: inline-block;
+          background: $color-gray;
+          border-radius: 50%;
+          height: 13px;
+          width: 13px;
+          margin-left: 7px;
+          @extend%hover-transition;
+
+          &:first-child {
+            background-color: $primary;
+          }
+
+          &.active,
+          &:hover {
+            background-color: $primary;
+          }
+        }
+      }
+    }
+
+    .promotedImage {
+      background-image: url('https://images.unsplash.com/photo-1601366533287-5ee4c763ae4e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');
+      background-size: cover;
+      background-position-y: 85%;
+      height: 300px;
+      justify-content: space-between;
+      cursor: pointer;
+
+      &:hover {
+        .addToCard, .timeToPromote {
+          visibility: visible;
+        }
+      }
+
+      .addToCard {
+        visibility: hidden;
+        vertical-align: middle;
+        padding-top: 110px;
+        display: flex;
+        justify-content: center;
+        transition: 0.25s ease-in-out;
+
+        .addToCardButton {
+          font-size: 15px;
+        }
+
+        .icon {
+          margin-right: 5px;
+          font-size: 18px;
+        }
+      }
+
+      .timeToPromote {
+        visibility: hidden;
+        display: flex;
+        justify-content: space-between;
+        padding: 75px 20px 20px 20px;
+        transition: 0.25s ease-in-out;
+
+        .circle {
+          display: inline-block;
+          background: $color-midGray;
+          height: 70px;
+          width: 70px;
+          border-radius: 50%;
+
+          h2 {
+            color: $color-white;
+            padding-top: 8px;
+            margin: 0 auto;
+            text-align: center;
+          }
+
+          h4 {
+            color: $color-white;
+            color: $color-white;
+            margin: 0 auto;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    .line {
+      margin: 0 10px;
+      border-bottom: 1px solid $dark-border-color;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 50%;
+        width: 30px;
+        border-bottom: 4px solid $primary;
+        transform: translateX(-50%);
+      }
+    }
+
+    .content {
+      text-align: center;
+      padding: 20px;
+
+      h5 {
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 1px;
+      }
+
+      .stars {
+        a {
+          text-decoration: none;
+          color: $text-color;
+        }
+      }
+    }
+
+    .actions {
+      padding: 15px 10px 10px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .oldPrice{
+      text-decoration: line-through;
+      font-size: 14px;
+      line-height: 22px;
+      padding: 4px 8px;
+      font-weight: 400;
+      color: $gray-text-color;
+    }
+  }
+
+  .bannerWrapper {
+    background-image: url('https://images.pexels.com/photos/276583/pexels-photo-276583.jpeg?cs=srgb&dl=pexels-pixabay-276583.jpg&fm=jpg');
+    background-size: cover;
+    background-position-y: 70%;
+    height: 100%;
+    position: relative;
+    padding-top: 1px;
+    display: flex;
+
+    .overaly {
+      width: 100%;
+      height: 200px;
+      position: absolute;
+      top: 25%;
+      background-color: $color-black;
+      opacity: 0.5;
+    }
+
+    .titles {
+      margin: 0 auto;
+      z-index: 2;
+
+      h1 {
+        margin: 0 auto;
+        display: inline-block;
+        top: 25%;
+        padding: 10px;
+        font-size: 40px;
+        color: $color-white;
+        padding-top: 190px;
+
+
+        &:first-child {
+          font-weight: lighter;
+        }
+
+        &:last-child {
+          font-weight: bolder;
+        }
+      }
+    }
+
+    h4 {
+      position: absolute;
+      color: $color-white;
+      text-align: center;
+      top: 47%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      font-weight: lighter;
+      font-size: 22px;
+      width: 100%;
+      z-index: 2;
+    }
+  }
+
+  .buttonWhite {
+    margin: 0 auto;
+    display: inline;
+    background: $color-white;
+    height: 50px;
+    width: 140px;
+    position: absolute;
+    top: 60%;
+    left: 40%;
+    border-radius: 4px;
+    padding: 14px 25px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    color: $color-black;
+    z-index: 2;
+    @extend%hover-transition;
+
+    &:hover {
+      background: $color-orange;
+      color: $color-white;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    top: 92%;
+    background: $color-black;
+
+    .buttonArrow {
+      height: 100%;
+      width: 50%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-greyWhite;
+      z-index: 2;
+      cursor: pointer;
+
+      &:hover {
+        background: $color-orange;
+      }
+    }
+  }
+}
