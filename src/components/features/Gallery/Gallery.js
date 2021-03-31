@@ -3,6 +3,7 @@ import ReactTooltip from 'react-tooltip';
 import PropTypes from 'prop-types';
 
 import Button from '../../common/Button/Button';
+import Swipeable from '../../common/Swipeable/Swipeable';
 import style from './Gallery.module.scss';
 
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
@@ -31,7 +32,30 @@ class Gallery extends React.Component {
     },
     activeTab: 'featured',
     activePage: 0,
+    slidesArr: this.props.products.filter(item => item.newFurniture === true),
   };
+
+  changeCategoryTab(newTab) {
+    this.setState({ activeTab: newTab });
+  }
+
+  moveRight() {
+    const pagesCount = Math.ceil(this.state.slidesArr.length / 6);
+    if (this.state.activePage < pagesCount - 1) {
+      this.setState(prevState => ({
+        activePage: prevState.activePage + 1,
+      }));
+    }
+  }
+
+  moveLeft() {
+    const pagesCount = Math.ceil(this.state.slidesArr.length / 6);
+    if (this.state.activePage > 0 && this.state.activePage < pagesCount) {
+      this.setState(prevState => ({
+        activePage: prevState.activePage - 1,
+      }));
+    }
+  }
 
   render() {
     const { products } = this.props;
@@ -45,8 +69,10 @@ class Gallery extends React.Component {
 
     const { activeTab, activePage, activeProduct } = this.state;
 
-    const slidesArr = products.filter(item => item.newFurniture === true);
-    const slidesToDisplay = slidesArr.slice(activePage * 6, (activePage + 1) * 6);
+    const slidesToDisplay = this.state.slidesArr.slice(
+      activePage * 6,
+      (activePage + 1) * 6
+    );
 
     return (
       <div className={style.root}>
@@ -60,7 +86,13 @@ class Gallery extends React.Component {
                 <ul>
                   {categories.map(item => (
                     <li key={item.id}>
-                      <a className={item.id === activeTab && style.active}>
+                      <a
+                        className={item.id === activeTab && style.active}
+                        onClick={event => {
+                          event.preventDefault();
+                          this.changeCategoryTab(item.id);
+                        }}
+                      >
                         {item.name}
                       </a>
                     </li>
@@ -114,28 +146,42 @@ class Gallery extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className={style.slider}>
-                  <Button className={style.prev}>
-                    <p>{'<'}</p>
-                  </Button>
-                  <div className={style.slides}>
-                    {slidesToDisplay.map(slide => (
-                      <img
-                        key={slide.id}
-                        src={slide.image}
-                        alt='pic'
-                        className={
-                          slide.image === activeProduct.image
-                            ? style.slidePicture + ' ' + style.active
-                            : style.slidePicture
-                        }
-                      />
-                    ))}
+                <Swipeable activeItem={this.state.activePage}>
+                  <div className={style.slider}>
+                    <Button
+                      className={style.prev}
+                      onClick={event => {
+                        event.preventDefault();
+                        this.moveLeft();
+                      }}
+                    >
+                      <p>{'<'}</p>
+                    </Button>
+                    <div className={style.slides}>
+                      {slidesToDisplay.map(slide => (
+                        <img
+                          key={slide.id}
+                          src={slide.image}
+                          alt='pic'
+                          className={
+                            slide.image === activeProduct.image
+                              ? style.slidePicture + ' ' + style.active
+                              : style.slidePicture
+                          }
+                        />
+                      ))}
+                    </div>
+                    <Button
+                      className={style.next}
+                      onClick={event => {
+                        event.preventDefault();
+                        this.moveRight();
+                      }}
+                    >
+                      <p>{'>'}</p>
+                    </Button>
                   </div>
-                  <Button className={style.next}>
-                    <p>{'>'}</p>
-                  </Button>
-                </div>
+                </Swipeable>
               </div>
             </div>
             <div className={'col-6 ' + style.picture}>
