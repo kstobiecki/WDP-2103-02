@@ -14,6 +14,7 @@ $color-white: #fff;
 
 $color-greyWhite: #e2e2e2;
 $color-grayWhite-darker: #f4f5f7;
+$color-green: #44bd32;
 
 $color-gray-rgb-169: rgb(169, 169, 169);
 $color-gray-rgb-216: rgb(216, 216, 216);
@@ -35,6 +36,7 @@ $dark-border-color: $color-black;
 
 $light-bg: $color-white;
 $gray-white-bg: $color-grayWhite-darker;
+$gray-bg: $color-gray;
 $dark-bg: $color-midGray-dark;
 
 $header-topbar-bg: $color-midGray-light;
@@ -44,6 +46,29 @@ $footer-claim-bg: $color-black;
 $footer-bg: $color-midGray;
 
 $button-bg: $color-black;
+
+$nextPrev-bg: $color-black;
+$nextPrev-color: $color-white;
+
+//gallery colors var's
+
+$gallery-content-bg: $color-white;
+$gallery-header-before: $primary;
+$gallery-header-border: $color-grayWhite-darker;
+$gallery-header: $primary;
+$gallery-link-active-bg: $color-grayWhite-darker;
+$gallery-link-active-border: $primary;
+$gallery-link-active: $primary;
+$gallery-link-bg: $color-white;
+$gallery-link-border: $color-gray;
+$gallery-link: $color-black;
+$gallery-picture: $color-green;
+$gallery-price-bg: $color-gray;
+$gallery-price: $color-grayWhite-darker;
+$gallery-triangle: $color-black;
+$nextPrev-bg: $color-black;
+$nextPrev-color: $color-white;
+
 
 //hover animation
 
