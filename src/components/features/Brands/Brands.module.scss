@@ -1,0 +1,51 @@
+@import "../../../styles/settings.scss";
+
+.root {
+  padding: 3rem 0 5rem 0 ;
+
+  .box {
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.slider {
+  display: flex;
+  padding: 5px;
+  justify-content: space-around;
+  border: 1px solid $gallery-link-border;
+
+  .prev, .next {
+    width: 20px;
+    background-color: $nextPrev-bg;
+    color: $nextPrev-color;
+    text-align: center;
+
+    p {
+      margin: 28px 0;
+    }
+
+    &:hover {
+      background-color: lighten($nextPrev-bg, 20%);
+    }
+  }
+
+  .slides {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    .slidePicture {
+      width: 75px;
+      flex: 1;
+      height: 75px;
+      margin: 2px;
+      object-fit: cover;
+      opacity: 0.5;
+      position: relative;
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+}
