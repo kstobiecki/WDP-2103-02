@@ -1094,7 +1094,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.10.5", "@babel/runtime@^7.12.1", "@babel/runtime@^7.13.8", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.10.5", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.13.8", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
   version "7.13.10"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.10.tgz#47d42a57b6095f4468da440388fdbad8bebf0d7d"
   integrity sha512-4QPkjJq6Ns3V/RgpEahRk+AGfL0eO6RHHtTWoNNr5mO49G6B5+X6d6THgWEAvTrznU5xYpbAlVKRYcsCgh/Akw==
@@ -9942,6 +9942,13 @@ react-swipe-component@^3.0.0:
   integrity sha512-iE8qw7OHg2cMWmurWJC/EFj6LgB70AA+eRTbP4NZfdEF2qRVaC03cK2PxcfuB/lwz56slIntjFRwcYFAoYIrbQ==
   dependencies:
     react "^16.8.1"
+
+react-swiping-carousel@^1.0.5-pre3:
+  version "1.0.5-pre3"
+  resolved "https://registry.yarnpkg.com/react-swiping-carousel/-/react-swiping-carousel-1.0.5-pre3.tgz#9e6bcd71c535e1b1a3376d6a88e8306e3fba567b"
+  integrity sha512-I0WXOFaLJQvaaje9RhZSfyWfTvJnc00g10KJiKhjCQSlBPxp/0pTOl4f51W1yJ/6xMOV/MGb3xm2nW8JW1TzJQ==
+  dependencies:
+    "@babel/runtime" "^7.11.2"
 
 react-test-renderer@^16.0.0-0, react-test-renderer@^16.9.0:
   version "16.14.0"

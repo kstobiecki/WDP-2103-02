@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './PromotedProducts.module.scss';
 import Button from '../../common/Button/Button';
 import PropTypes from 'prop-types';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faStar,
@@ -12,41 +13,136 @@ import {
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
-// import Swipeable from '../../common/Swipeable/Swipeable';
-import Stars from '../../common/Stars/StarsContainer';
-// import PromotionCarousel from '../../common/PromotionCarousel/PromotionCarousel';
+import Swipeable from '../../common/Swipeable/Swipeable';
+import HotDeal from '../../common/HotDeal/HotDeal';
 
 class PromotedProducts extends React.Component {
   state = {
-    activePromotion: 0,
+    autoplay: true,
+    activePage: 0,
     isFading: false,
+
+    leftActivePage: 0,
+    leftFade: false,
+    leftManualPageChange: false,
   };
 
-  handlePromoChange(newPromotion) {
-    this.setState({ isFading: true });
-    setTimeout(() => {
-      this.setState({ activePromotion: newPromotion });
-    }, 500);
-    setTimeout(() => {
-      this.setState({ isFading: false });
-    }, 500);
+  leftHandlePageChange(newPage) {
+    this.setState({ leftFade: true });
+    setTimeout(
+      () =>
+        this.setState({
+          leftActivePage: newPage,
+          leftFade: false,
+          leftManualPageChange: true,
+          autoplay: false,
+        }),
+      100
+    );
+  }
+
+  leftHandleRightAction = () => {
+    const { leftActivePage, leftManualPageChange } = this.state;
+    if (leftManualPageChange) {
+      this.clearAutoplayTimeout();
+      this.setState({ leftManualPageChange: false });
+    } else if (leftActivePage > 0) {
+      this.clearAutoplayTimeout();
+      this.setState({ leftActivePage: leftActivePage - 1, autoplay: false });
+    }
+  };
+
+  leftHandleLeftAction = () => {
+    const { leftActivePage, leftManualPageChange } = this.state;
+    if (leftManualPageChange) {
+      this.clearAutoplayTimeout();
+      this.setState({ leftManualPageChange: false });
+    } else {
+      this.clearAutoplayTimeout();
+      this.setState({ leftActivePage: leftActivePage + 1, autoplay: false });
+    }
+  };
+
+  setAutoplay() {
+    if (this.autoplay === undefined) {
+      this.setState({
+        autoplay: true,
+      });
+      this.autoplay = setInterval(() => {
+        const { leftActivePage } = this.state;
+        if (leftActivePage < this.categoryProducts.length - 1) {
+          this.setState({ leftFade: true });
+          setTimeout(
+            () =>
+              this.setState({
+                leftActivePage: leftActivePage + 1,
+                leftFade: false,
+                leftManualPageChange: true,
+              }),
+            100
+          );
+        } else {
+          this.setState({ leftFade: true });
+          setTimeout(
+            () =>
+              this.setState({
+                leftActivePage: 0,
+                leftFade: false,
+                leftManualPageChange: true,
+              }),
+            100
+          );
+        }
+      }, 3000);
+    }
+  }
+
+  clearAutoplayTimeout() {
+    if (this.autoplayTimeout !== undefined) {
+      clearTimeout(this.autoplayTimeout);
+      this.autoplayTimeout = undefined;
+    }
+  }
+
+  componentDidMount() {
+    this.setAutoplay();
+  }
+
+  componentDidUpdate() {
+    if (!this.state.autoplay && this.autoplayTimeout === undefined) {
+      clearInterval(this.autoplay);
+      this.autoplay = undefined;
+      this.autoplayTimeout = setTimeout(() => this.setAutoplay(), 7000);
+    }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.autoplay);
+    this.autoplay = undefined;
   }
 
   render() {
-    const {
-      name,
-      image,
-      stars,
-      userStars,
-      addToFavorites,
-      removeFromFavorites,
-      id,
-      favorites,
-      compare,
-      oldPrice,
-    } = this.props;
+    const { products } = this.props;
+    const { leftActivePage } = this.state;
+    this.categoryProducts = products.filter(item => item.hotDeal === true);
 
-    const { activePromotion, isFading } = this.state;
+    const dots = [];
+    for (let i = 0; i < this.categoryProducts.length; i++) {
+      dots.push(
+        <li>
+          <a
+            href='/#'
+            onClick={event => {
+              event.preventDefault();
+              return this.leftHandlePageChange(i);
+            }}
+            className={i === leftActivePage && styles.active}
+          >
+            page {i}
+          </a>
+        </li>
+      );
+    }
 
     return (
       <div className={styles.root}>
@@ -54,109 +150,42 @@ class PromotedProducts extends React.Component {
           <div className='row'>
             <div className='col-md-4'>
               <div className={styles.dealsWrapper}>
-                <img src={image} alt={name} />
                 <div className={styles.deals}>
                   <h3>HOT DEALS</h3>
+                  {/* <div className={styles.dots}>
+                    <span className={styles.dot}></span>
+                    <span className={styles.dot}></span>
+                    <span className={styles.dot}></span>
+                  </div> */}
 
-                  <div className={styles.dots}>
-                    <span className={styles.dot}></span>
-                    <span className={styles.dot}></span>
-                    <span className={styles.dot}></span>
-                  </div>
-                  {/* <Swipeable
-                    itemsCount={pagesCount}
-                    activeItem={this.state.activePage}
-                    swipeAction={this.handlePageChange.bind(this)}
-                  >
-                    <div className='row'>
-                      {categoryProducts
-                        .slice(activePage * 8, (activePage + 1) * 8)
-                        .map(item => (
-                          <div key={item.id} className='col-6 col-xl-3 col-lg-4'>
-                            <ProductBox {...item} />
-                          </div>
-                        ))}
-                    </div>
-                  </Swipeable> */}
-                </div>
-                <div className={styles.promotedImage}>
-                  <img src={image} alt={name} />
-                  <div className={styles.addToCard}>
-                    <Button variant='small' className={styles.addToCardButton}>
-                      <FontAwesomeIcon
-                        className={styles.icon}
-                        icon={faShoppingBasket}
-                      ></FontAwesomeIcon>{' '}
-                      ADD TO CART
-                    </Button>
-                  </div>
-                  <div className={styles.timeToPromote}>
-                    <div className={styles.circle}>
-                      <h2>25</h2>
-                      <h4>DAYS</h4>
-                    </div>
-                    <div className={styles.circle}>
-                      <h2>10</h2>
-                      <h4>HRS</h4>
-                    </div>
-                    <div className={styles.circle}>
-                      <h2>45</h2>
-                      <h4>MINS</h4>
-                    </div>
-                    <div className={styles.circle}>
-                      <h2>30</h2>
-                      <h4>SECS</h4>
-                    </div>
+                  <div className={'col-auto ' + styles.dots}>
+                    <ul>{dots}</ul>
                   </div>
                 </div>
-                <div className={styles.content}>
-                  <h5>Aenean-ru-bristique-1</h5>
-                  <Stars id={id} stars={stars} userStars={userStars} />
-                </div>
-                <div className={styles.line}></div>
-                <div className={styles.actions}>
-                  <div className={styles.outlines}>
-                    <Button variant='outline'>
-                      <FontAwesomeIcon icon={faEye}></FontAwesomeIcon>
-                    </Button>
-                    <Button
-                      className={favorites ? styles.favorites : styles.outlines}
-                      onClick={e => {
-                        e.preventDefault();
-                        favorites
-                          ? removeFromFavorites({ id })
-                          : addToFavorites({ id });
-                      }}
-                      variant='outline'
+                <Swipeable
+                  activePage={this.state.leftActivePage}
+                  rightAction={this.leftHandleRightAction}
+                  leftAction={this.leftHandleLeftAction}
+                >
+                  {this.categoryProducts.map(item => (
+                    <div
+                      key={item.id}
+                      className={this.state.leftFade ? styles.fadeOut : styles.fadeIn}
                     >
-                      <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
-                    </Button>
-                    <Button variant='outline' active={compare}>
-                      <FontAwesomeIcon icon={faExchangeAlt}></FontAwesomeIcon>
-                    </Button>
-                  </div>
-                  <div>
-                    {oldPrice !== 0 && (
-                      <span className={styles.oldPrice}> $350.00</span>
-                    )}
-                  </div>
-                  <div className={styles.price}>
-                    <Button noHover variant='small'>
-                      $300.00
-                    </Button>
-                  </div>
-                </div>
+                      <HotDeal {...item} />
+                    </div>
+                  ))}
+                </Swipeable>
               </div>
             </div>
             <div className='col-md-8'>
               <div className={styles.bannerWrapper}>
-                {/* <PromotionCarousel /> */}
                 <div className={styles.overaly}></div>
-                <div className={styles.titles}>
+                {/* <div className={styles.titles}>
                   <h1>INDOOR</h1>
                   <h1>FURNITURE</h1>
                 </div>
-                <h4>SAVE UP TO 50% OF ALL FURNITURE</h4>
+                <h4>SAVE UP TO 50% OF ALL FURNITURE</h4> */}
                 <Button className={styles.buttonWhite}>SHOP NOW</Button>
                 <div className={styles.buttons}>
                   <Button className={styles.buttonArrow}>
@@ -176,19 +205,17 @@ class PromotedProducts extends React.Component {
 }
 
 PromotedProducts.propTypes = {
-  children: PropTypes.node,
-  name: PropTypes.string,
-  price: PropTypes.number,
-  promo: PropTypes.string,
-  stars: PropTypes.number,
-  favorites: PropTypes.bool,
-  addToFavorites: PropTypes.func,
-  removeFromFavorites: PropTypes.func,
-  id: PropTypes.string,
-  compare: PropTypes.bool,
-  image: PropTypes.string,
-  oldPrice: PropTypes.number,
-  userStars: PropTypes.number,
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      category: PropTypes.string,
+      price: PropTypes.number,
+      stars: PropTypes.number,
+      promo: PropTypes.string,
+      newFurniture: PropTypes.bool,
+    })
+  ),
 };
 
 export default PromotedProducts;

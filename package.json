@@ -68,6 +68,7 @@
     "react-scripts": "3.1.2",
     "react-slick": "^0.28.1",
     "react-swipe-component": "^3.0.0",
+    "react-swiping-carousel": "^1.0.5-pre3",
     "react-test-renderer": "^16.9.0",
     "redux": "^4.0.4",
     "semantic-ui-css": "^2.4.1",
