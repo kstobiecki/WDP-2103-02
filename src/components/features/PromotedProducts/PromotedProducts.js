@@ -100,14 +100,14 @@ class PromotedProducts extends React.Component {
                 <h4>SAVE UP TO 50% OF ALL FURNITURE</h4>
                 <Button className={styles.buttonWhite}>SHOP NOW</Button> */}
                 <Banner />
-                <div className={styles.buttons}>
+                {/* <div className={styles.buttons}>
                   <Button className={styles.buttonArrow}>
                     <FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon>
                   </Button>
                   <Button className={styles.buttonArrow}>
                     <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>
                   </Button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
