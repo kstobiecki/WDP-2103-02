@@ -86,7 +86,7 @@ const PromotedProducts = ({
               <div className={styles.line}></div>
               <div className={styles.actions}>
                 <div className={styles.outlines}>
-                  <Button variant='outline'>
+                  <Button variant='outline' data-tip={'View detail'}>
                     <FontAwesomeIcon icon={faEye}>Favorite</FontAwesomeIcon>
                   </Button>
                   <Button
@@ -96,10 +96,15 @@ const PromotedProducts = ({
                       favorites ? removeFromFavorites({ id }) : addToFavorites({ id });
                     }}
                     variant='outline'
+                    data-tip={favorites ? 'Remove from favorites' : 'Add to favorites'}
                   >
                     <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
                   </Button>
-                  <Button variant='outline' active={compare}>
+                  <Button
+                    variant='outline'
+                    active={compare}
+                    data-tip={compare ? 'Remove from compare' : 'Add to compare'}
+                  >
                     <FontAwesomeIcon icon={faExchangeAlt}>
                       Add to compare
                     </FontAwesomeIcon>

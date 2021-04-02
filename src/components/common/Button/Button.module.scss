@@ -27,6 +27,7 @@
   font-weight: 400;
 }
 
+.gallery,
 .outline {
   display: inline-block;
   padding: 5px 10px;
@@ -37,12 +38,19 @@
   @extend%hover-transition;
 
   &:not(.noHover):hover {
-    background-color: $button-bg;
-    color: $light-text-color;
+    border-color: $primary;
+    color: $primary;
   }
 
   &.active {
-    background-color: $button-bg;
-    color: $light-text-color;
+    background-color: $primary;
+    color: $text-color;
+    &:hover{
+      color: $light-text-color
+    }
   }
+}
+
+.gallery {
+  margin-bottom: 6px;
 }
