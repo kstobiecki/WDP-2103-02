@@ -21,7 +21,7 @@
         display: inline-block;
         padding: 15px 20px 0 0;
 
-        .dot {
+        span {
           display: inline-block;
           background: $color-gray;
           border-radius: 50%;
@@ -163,17 +163,16 @@
     height: 100%;
     position: relative;
     padding-top: 1px;
-    display: flex;
+    // display: flex;
 
-    .bannerPhoto {
-    background-image: url('https://images.pexels.com/photos/276583/pexels-photo-276583.jpeg?cs=srgb&dl=pexels-pixabay-276583.jpg&fm=jpg');
-    background-size: cover;
-    background-position-y: 70%;
-    height: 100%;
-    position: relative;
-    padding-top: 1px;
-    display: flex;
-    }
+    // .bannerPhoto {
+    // background-image: url('https://images.pexels.com/photos/276583/pexels-photo-276583.jpeg?cs=srgb&dl=pexels-pixabay-276583.jpg&fm=jpg');
+    // background-size: cover;
+    // background-position-y: 85%;
+    // height: 100%;
+    // width: 100%;
+    // position: absolute;
+    // }
 
     .overaly {
       width: 100%;

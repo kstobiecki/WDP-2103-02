@@ -98,7 +98,6 @@ HotDeal.propTypes = {
   children: PropTypes.node,
   name: PropTypes.string,
   price: PropTypes.number,
-  promo: PropTypes.string,
   stars: PropTypes.number,
   favorites: PropTypes.bool,
   addToFavorites: PropTypes.func,

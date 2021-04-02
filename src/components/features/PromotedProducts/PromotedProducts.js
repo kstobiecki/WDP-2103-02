@@ -15,134 +15,62 @@ import {
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Swipeable from '../../common/Swipeable/Swipeable';
 import HotDeal from '../../common/HotDeal/HotDeal';
+import Banner from '../../common/Banner/Banner';
 
 class PromotedProducts extends React.Component {
   state = {
-    autoplay: true,
     activePage: 0,
+    activeCategory: 'bed',
     isFading: false,
-
-    leftActivePage: 0,
-    leftFade: false,
-    leftManualPageChange: false,
   };
 
-  leftHandlePageChange(newPage) {
-    this.setState({ leftFade: true });
-    setTimeout(
-      () =>
-        this.setState({
-          leftActivePage: newPage,
-          leftFade: false,
-          leftManualPageChange: true,
-          autoplay: false,
-        }),
-      100
-    );
-  }
-
-  leftHandleRightAction = () => {
-    const { leftActivePage, leftManualPageChange } = this.state;
-    if (leftManualPageChange) {
-      this.clearAutoplayTimeout();
-      this.setState({ leftManualPageChange: false });
-    } else if (leftActivePage > 0) {
-      this.clearAutoplayTimeout();
-      this.setState({ leftActivePage: leftActivePage - 1, autoplay: false });
-    }
+  mobile = {
+    elementsOnPage: 1,
   };
 
-  leftHandleLeftAction = () => {
-    const { leftActivePage, leftManualPageChange } = this.state;
-    if (leftManualPageChange) {
-      this.clearAutoplayTimeout();
-      this.setState({ leftManualPageChange: false });
-    } else {
-      this.clearAutoplayTimeout();
-      this.setState({ leftActivePage: leftActivePage + 1, autoplay: false });
-    }
+  tablet = {
+    elementsOnPage: 2,
+  };
+  desktop = {
+    elementsOnPage: 8,
   };
 
-  setAutoplay() {
-    if (this.autoplay === undefined) {
-      this.setState({
-        autoplay: true,
-      });
-      this.autoplay = setInterval(() => {
-        const { leftActivePage } = this.state;
-        if (leftActivePage < this.categoryProducts.length - 1) {
-          this.setState({ leftFade: true });
-          setTimeout(
-            () =>
-              this.setState({
-                leftActivePage: leftActivePage + 1,
-                leftFade: false,
-                leftManualPageChange: true,
-              }),
-            100
-          );
-        } else {
-          this.setState({ leftFade: true });
-          setTimeout(
-            () =>
-              this.setState({
-                leftActivePage: 0,
-                leftFade: false,
-                leftManualPageChange: true,
-              }),
-            100
-          );
-        }
-      }, 3000);
-    }
-  }
-
-  clearAutoplayTimeout() {
-    if (this.autoplayTimeout !== undefined) {
-      clearTimeout(this.autoplayTimeout);
-      this.autoplayTimeout = undefined;
-    }
-  }
-
-  componentDidMount() {
-    this.setAutoplay();
-  }
-
-  componentDidUpdate() {
-    if (!this.state.autoplay && this.autoplayTimeout === undefined) {
-      clearInterval(this.autoplay);
-      this.autoplay = undefined;
-      this.autoplayTimeout = setTimeout(() => this.setAutoplay(), 7000);
-    }
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.autoplay);
-    this.autoplay = undefined;
+  handlePageChange(newPage) {
+    this.setState({ isFading: true });
+    setTimeout(() => {
+      this.setState({ activePage: newPage });
+    }, 500);
+    setTimeout(() => {
+      this.setState({ isFading: false });
+    }, 500);
   }
 
   render() {
-    const { products } = this.props;
-    const { leftActivePage } = this.state;
-    this.categoryProducts = products.filter(item => item.hotDeal === true);
+    const { promotedProducts, vpMode } = this.props;
+    const { activeCategory, activePage, isFading } = this.state;
 
-    const dots = [];
-    for (let i = 0; i < this.categoryProducts.length; i++) {
-      dots.push(
-        <li>
-          <a
-            href='/#'
-            onClick={event => {
-              event.preventDefault();
-              return this.leftHandlePageChange(i);
-            }}
-            className={i === leftActivePage && styles.active}
-          >
-            page {i}
-          </a>
-        </li>
-      );
-    }
+    const categoryProducts = promotedProducts.filter(
+      item => item.category === activeCategory
+    );
+
+    const pagesCount =
+      vpMode === 'mobile'
+        ? Math.ceil(categoryProducts.length / this.mobile.elementsOnPage)
+        : vpMode === 'tablet'
+        ? Math.ceil(categoryProducts.length / this.tablet.elementsOnPage)
+        : Math.ceil(categoryProducts.length / this.desktop.elementsOnPage);
+
+    // const dots = [];
+    // for (let i = 0; i < pagesCount; i++) {
+    //   dots.push(
+    //     <span
+    //       onClick={() => this.handlePageChange(i)}
+    //       className={i === activePage && styles.active}
+    //     >
+    //       page {i}
+    //     </span>
+    //   );
+    // }
 
     return (
       <div className={styles.root}>
@@ -152,41 +80,26 @@ class PromotedProducts extends React.Component {
               <div className={styles.dealsWrapper}>
                 <div className={styles.deals}>
                   <h3>HOT DEALS</h3>
-                  {/* <div className={styles.dots}>
+                  <div className={styles.dots}>
                     <span className={styles.dot}></span>
                     <span className={styles.dot}></span>
                     <span className={styles.dot}></span>
-                  </div> */}
-
-                  <div className={'col-auto ' + styles.dots}>
-                    <ul>{dots}</ul>
                   </div>
                 </div>
-                <Swipeable
-                  activePage={this.state.leftActivePage}
-                  rightAction={this.leftHandleRightAction}
-                  leftAction={this.leftHandleLeftAction}
-                >
-                  {this.categoryProducts.map(item => (
-                    <div
-                      key={item.id}
-                      className={this.state.leftFade ? styles.fadeOut : styles.fadeIn}
-                    >
-                      <HotDeal {...item} />
-                    </div>
-                  ))}
-                </Swipeable>
+                <HotDeal />
               </div>
             </div>
             <div className='col-md-8'>
               <div className={styles.bannerWrapper}>
-                <div className={styles.overaly}></div>
-                {/* <div className={styles.titles}>
+                {/* <img className={styles.bannerPhoto} alt="sliderImage" ></img> */}
+                {/* <div className={styles.overaly}></div>
+                <div className={styles.titles}>
                   <h1>INDOOR</h1>
                   <h1>FURNITURE</h1>
                 </div>
-                <h4>SAVE UP TO 50% OF ALL FURNITURE</h4> */}
-                <Button className={styles.buttonWhite}>SHOP NOW</Button>
+                <h4>SAVE UP TO 50% OF ALL FURNITURE</h4>
+                <Button className={styles.buttonWhite}>SHOP NOW</Button> */}
+                <Banner />
                 <div className={styles.buttons}>
                   <Button className={styles.buttonArrow}>
                     <FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon>
@@ -204,8 +117,29 @@ class PromotedProducts extends React.Component {
   }
 }
 
+// PromotedProducts.propTypes = {
+//   promotedProducts: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.string,
+//       name: PropTypes.string,
+//       category: PropTypes.string,
+//       price: PropTypes.number,
+//       stars: PropTypes.number,
+//       promo: PropTypes.string,
+//       newFurniture: PropTypes.bool,
+//     })
+//   ),
+// };
+
 PromotedProducts.propTypes = {
-  products: PropTypes.arrayOf(
+  children: PropTypes.node,
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ),
+  promotedProducts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
       name: PropTypes.string,
@@ -216,6 +150,11 @@ PromotedProducts.propTypes = {
       newFurniture: PropTypes.bool,
     })
   ),
+  vpMode: PropTypes.string,
+};
+
+PromotedProducts.defaultProps = {
+  promotedProducts: [],
 };
 
 export default PromotedProducts;
