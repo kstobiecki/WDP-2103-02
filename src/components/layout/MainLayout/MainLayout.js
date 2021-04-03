@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import ReactTooltip from 'react-tooltip';
 import PropTypes from 'prop-types';
 
 import Header from '../Header/Header';
@@ -25,6 +26,7 @@ const MainLayout = ({ children }) => {
   });
   return (
     <div>
+      <ReactTooltip type='dark' place='right' />
       <Header />
       {children}
       <Footer />

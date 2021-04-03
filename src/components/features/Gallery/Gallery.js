@@ -43,7 +43,7 @@ class Gallery extends React.Component {
       { id: 'topRated', name: 'top rated' },
     ];
 
-    const { activeTab, activePage, activeProduct } = this.state;
+    const { activeTab, activePage, activeProduct, favorites, compare } = this.state;
 
     const slidesArr = products.filter(item => item.newFurniture === true);
     const slidesToDisplay = slidesArr.slice(activePage * 6, (activePage + 1) * 6);
@@ -72,22 +72,30 @@ class Gallery extends React.Component {
                   <img src={activeProduct.image} alt='product' />
                   <div className={style.buttons}>
                     <ReactTooltip type='dark' place='right' />
-                    <Button data-tip='Add to favorites'>
+                    <Button
+                      variant='gallery'
+                      data-tip={
+                        favorites ? 'Remove from favorites' : 'Add to favorites'
+                      }
+                    >
                       <Icon icon={faHeart} className={style.icon}>
                         Favorite
                       </Icon>
                     </Button>
-                    <Button data-tip='Add to compare'>
+                    <Button
+                      variant='gallery'
+                      data-tip={compare ? 'Remove from compare' : 'Add to compare'}
+                    >
                       <Icon icon={faExchangeAlt} className={style.icon}>
                         Add to compare
                       </Icon>
                     </Button>
-                    <Button data-tip='View details'>
+                    <Button variant='gallery' data-tip='View details'>
                       <Icon icon={faEye} className={style.icon}>
                         View details
                       </Icon>
                     </Button>
-                    <Button data-tip='Add to basket'>
+                    <Button variant='gallery' data-tip='Add to basket'>
                       <Icon icon={faShoppingBasket} className={style.icon}>
                         Add to basket
                       </Icon>

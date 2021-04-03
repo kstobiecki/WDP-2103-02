@@ -71,7 +71,7 @@ $nextPrev-color: $color-white;
 
 
 //hover animation
-
+/*
 @keyframes shake {
     10%,
     90% {
@@ -94,11 +94,11 @@ $nextPrev-color: $color-white;
       transform: translate3d(4px, 0, 0);
     }
   }
-
+*/
 
 $bg-transition-time: 0.25s;
 $txt-transition-time: 0.25s;
-$shake-duration-time: 1s;
+/*$shake-duration-time: 1s;
 
 %shake-animation {
     animation: shake $shake-duration-time cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
@@ -106,13 +106,13 @@ $shake-duration-time: 1s;
     backface-visibility: hidden;
     perspective: 1000px;
   }
-  
+  */
 %hover-transition {
     transition:  color $txt-transition-time, background-color $bg-transition-time;
   
-    &:not(.noHover):hover {
-      @extend%shake-animation;
-    }
+    //&:not(.noHover):hover {
+      //@extend%shake-animation;
+    //}
   }
 
   %hover-no-shake-transition {
