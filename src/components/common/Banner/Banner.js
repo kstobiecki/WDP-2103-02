@@ -47,10 +47,22 @@ const Banner = () => {
         </div>
       </ReactSwipe>
       <div className={styles.buttons}>
-        <Button className={styles.buttonArrow} onClick={() => reactSwipeEl.prev()}>
+        <Button
+          className={styles.buttonArrow}
+          onClick={event => {
+            reactSwipeEl.prev();
+            event.preventDefault();
+          }}
+        >
           <FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon>
         </Button>
-        <Button className={styles.buttonArrow} onClick={() => reactSwipeEl.next()}>
+        <Button
+          className={styles.buttonArrow}
+          onClick={event => {
+            reactSwipeEl.next();
+            event.preventDefault();
+          }}
+        >
           <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>
         </Button>
       </div>
