@@ -9,7 +9,7 @@ import FeatureBoxes from '../../features/FeatureBoxes/FeatureBoxes';
 import NewFurniture from '../../features/NewFurniture/NewFurnitureContainer';
 import PromotedProducts from '../../features/PromotedProducts/PromotedProducts';
 import Feedback from '../../features/Feedback/FeedbackContainer';
-
+import CompareBar from '../../features/CompareBar/CompareBarContainer';
 import Brands from '../../features/Brands/Brands';
 
 const Homepage = () => (
@@ -21,6 +21,7 @@ const Homepage = () => (
     <Gallery />
     <Brands />
     <Feedback />
+    <CompareBar />
   </div>
 );
 

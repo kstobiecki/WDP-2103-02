@@ -1,0 +1,33 @@
+@import '../../../styles/settings.scss';
+
+
+.component {
+    position: fixed;
+    bottom: 15px;
+    width: 100vw;
+    padding: $base-padding / 4;
+    background-color: rgba($light-bg, 0.95);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 15000;
+    border-top: 5px solid $dark-border-color;
+    border-bottom: 5px solid $dark-border-color;
+}
+
+.button {
+  display: flex;
+  align-items: flex-end;
+  background: $primary;
+  color: $light-text-color;
+  margin-right: $base-padding * 2;
+  padding: ($base-padding / 4) ($base-padding / 2);
+  height: 50%;
+  border-radius: 2px;
+
+  &:hover {
+    background: $dark-bg;
+    text-decoration: none;
+    color: $light-text-color;
+  }
+}
