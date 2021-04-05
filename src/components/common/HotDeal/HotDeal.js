@@ -13,14 +13,13 @@ import {
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
-
 import Stars from '../../common/Stars/StarsContainer';
+import ReactSwipe from 'react-swipe';
 
 const HotDeal = ({
   name,
-  price,
-  stars,
   image,
+  stars,
   addToFavorites,
   removeFromFavorites,
   id,
@@ -28,76 +27,191 @@ const HotDeal = ({
   compare,
   oldPrice,
   userStars,
-}) => (
-  <div className={styles.root}>
-    <div className={styles.promotedImage}>
-      <img src={image} alt={name} />
-      <div className={styles.addToCard}>
-        <Button variant='small' className={styles.addToCardButton}>
-          <FontAwesomeIcon
-            className={styles.icon}
-            icon={faShoppingBasket}
-          ></FontAwesomeIcon>{' '}
-          ADD TO CART
-        </Button>
+}) => {
+  let reactSwipeEl;
+  return (
+    <div className={styles.root}>
+      <div className={styles.deals}>
+        <h3>HOT DEALS</h3>
+        <div className={styles.dots}>
+          <span
+            className={styles.dot}
+            onClick={event => {
+              reactSwipeEl.prev();
+              event.preventDefault();
+            }}
+          ></span>
+          <span
+            className={styles.dot}
+            onClick={event => {
+              reactSwipeEl.next();
+              event.preventDefault();
+            }}
+          ></span>
+          <span
+            className={styles.dot}
+            onClick={event => {
+              reactSwipeEl.next();
+              event.preventDefault();
+            }}
+          ></span>
+        </div>
       </div>
-      <div className={styles.timeToPromote}>
-        <div className={styles.circle}>
-          <h2>25</h2>
-          <h4>DAYS</h4>
+      <ReactSwipe
+        className='carousel'
+        swipeOptions={{ continuous: false }}
+        ref={el => (reactSwipeEl = el)}
+      >
+        <div>
+          <div className={styles.promotedImage}>
+            <img src={image} alt={name} />
+            <div className={styles.addToCard}>
+              <Button variant='small' className={styles.addToCardButton}>
+                <FontAwesomeIcon
+                  className={styles.icon}
+                  icon={faShoppingBasket}
+                ></FontAwesomeIcon>{' '}
+                ADD TO CART
+              </Button>
+            </div>
+            <div className={styles.timeToPromote}>
+              <div className={styles.circle}>
+                <h2>25</h2>
+                <h4>DAYS</h4>
+              </div>
+              <div className={styles.circle}>
+                <h2>10</h2>
+                <h4>HRS</h4>
+              </div>
+              <div className={styles.circle}>
+                <h2>45</h2>
+                <h4>MINS</h4>
+              </div>
+              <div className={styles.circle}>
+                <h2>30</h2>
+                <h4>SECS</h4>
+              </div>
+            </div>
+          </div>
+          <div className={styles.content}>
+            <h5>Aenean-ru-bristique-1</h5>
+            <Stars id={id} stars={stars} userStars={userStars} />
+          </div>
+          <div className={styles.line}></div>
+          <div className={styles.actions}>
+            <div className={styles.outlines}>
+              <Button variant='outline' data-tip={'View detail'}>
+                <FontAwesomeIcon icon={faEye}>Favorite</FontAwesomeIcon>
+              </Button>
+              <Button
+                className={favorites ? styles.favorites : styles.outlines}
+                onClick={e => {
+                  e.preventDefault();
+                  favorites ? removeFromFavorites({ id }) : addToFavorites({ id });
+                }}
+                variant='outline'
+                data-tip={favorites ? 'Remove from favorites' : 'Add to favorites'}
+              >
+                <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
+              </Button>
+              <Button
+                variant='outline'
+                active={compare}
+                data-tip={compare ? 'Remove from compare' : 'Add to compare'}
+              >
+                <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
+              </Button>
+            </div>
+            <div>
+              {oldPrice !== 0 && <span className={styles.oldPrice}> $350.00</span>}
+            </div>
+            <div className={styles.price}>
+              <Button noHover variant='small'>
+                $300.00
+              </Button>
+            </div>
+          </div>
         </div>
-        <div className={styles.circle}>
-          <h2>10</h2>
-          <h4>HRS</h4>
+        <div>
+          <div className={styles.promotedImage}>
+            <img src={image} alt={name} />
+            <div className={styles.addToCard}>
+              <Button variant='small' className={styles.addToCardButton}>
+                <FontAwesomeIcon
+                  className={styles.icon}
+                  icon={faShoppingBasket}
+                ></FontAwesomeIcon>{' '}
+                ADD TO CART
+              </Button>
+            </div>
+            <div className={styles.timeToPromote}>
+              <div className={styles.circle}>
+                <h2>25</h2>
+                <h4>DAYS</h4>
+              </div>
+              <div className={styles.circle}>
+                <h2>10</h2>
+                <h4>HRS</h4>
+              </div>
+              <div className={styles.circle}>
+                <h2>45</h2>
+                <h4>MINS</h4>
+              </div>
+              <div className={styles.circle}>
+                <h2>30</h2>
+                <h4>SECS</h4>
+              </div>
+            </div>
+          </div>
+          <div className={styles.content}>
+            <h5>Aenean-ru-bristique-1</h5>
+            <Stars id={id} stars={stars} userStars={userStars} />
+          </div>
+          <div className={styles.line}></div>
+          <div className={styles.actions}>
+            <div className={styles.outlines}>
+              <Button variant='outline' data-tip={'View detail'}>
+                <FontAwesomeIcon icon={faEye}>Favorite</FontAwesomeIcon>
+              </Button>
+              <Button
+                className={favorites ? styles.favorites : styles.outlines}
+                onClick={e => {
+                  e.preventDefault();
+                  favorites ? removeFromFavorites({ id }) : addToFavorites({ id });
+                }}
+                variant='outline'
+                data-tip={favorites ? 'Remove from favorites' : 'Add to favorites'}
+              >
+                <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
+              </Button>
+              <Button
+                variant='outline'
+                active={compare}
+                data-tip={compare ? 'Remove from compare' : 'Add to compare'}
+              >
+                <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
+              </Button>
+            </div>
+            <div>
+              {oldPrice !== 0 && <span className={styles.oldPrice}> $350.00</span>}
+            </div>
+            <div className={styles.price}>
+              <Button noHover variant='small'>
+                $300.00
+              </Button>
+            </div>
+          </div>
         </div>
-        <div className={styles.circle}>
-          <h2>45</h2>
-          <h4>MINS</h4>
-        </div>
-        <div className={styles.circle}>
-          <h2>30</h2>
-          <h4>SECS</h4>
-        </div>
-      </div>
+      </ReactSwipe>
     </div>
-    <div className={styles.content}>
-      <h5>Aenean-ru-bristique-1</h5>
-      <Stars id={id} stars={stars} userStars={userStars} />
-    </div>
-    <div className={styles.line}></div>
-    <div className={styles.actions}>
-      <div className={styles.outlines}>
-        <Button variant='outline'>
-          <FontAwesomeIcon icon={faEye}>Favorite</FontAwesomeIcon>
-        </Button>
-        <Button
-          className={favorites ? styles.favorites : styles.outlines}
-          onClick={e => {
-            e.preventDefault();
-            favorites ? removeFromFavorites({ id }) : addToFavorites({ id });
-          }}
-          variant='outline'
-        >
-          <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
-        </Button>
-        <Button variant='outline' active={compare}>
-          <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
-        </Button>
-      </div>
-      <div>{oldPrice !== 0 && <span className={styles.oldPrice}> $350.00</span>}</div>
-      <div className={styles.price}>
-        <Button noHover variant='small'>
-          $300.00
-        </Button>
-      </div>
-    </div>
-  </div>
-);
+  );
+};
 
 HotDeal.propTypes = {
   children: PropTypes.node,
   name: PropTypes.string,
   price: PropTypes.number,
+  promo: PropTypes.string,
   stars: PropTypes.number,
   favorites: PropTypes.bool,
   addToFavorites: PropTypes.func,
