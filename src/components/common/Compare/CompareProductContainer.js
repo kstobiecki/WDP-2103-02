@@ -1,14 +1,13 @@
 import { connect } from 'react-redux';
-import CompareProduct from './CompareProduct';
-import { removeFromCompare } from '../../../redux/compareRedux';
+import { comparedProducts, comparingToggle } from '../../../redux/productsRedux.js';
+import CompareProducts from './CompareProduct';
 
-const mapDispatchToProps = (dispatch, props) => ({
-  removeFromCompare: () =>
-    dispatch(
-      removeFromCompare({
-        ...props,
-      })
-    ),
+const mapStateToProps = state => ({
+  products: comparedProducts(state),
 });
 
-export default connect(null, mapDispatchToProps)(CompareProduct);
+const mapDispatchToProps = dispatch => ({
+  comparingToggle: productId => dispatch(comparingToggle(productId)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CompareProducts);

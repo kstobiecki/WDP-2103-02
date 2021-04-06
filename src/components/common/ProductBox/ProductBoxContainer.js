@@ -1,31 +1,22 @@
 import { connect } from 'react-redux';
 import ProductBox from './ProductBox';
+import { getAll } from '../../../redux/categoriesRedux';
 import {
-  getAll,
+  getNew,
   createAction_addFavorites,
   createAction_removeFavorites,
+  comparingToggle,
 } from '../../../redux/productsRedux';
-import {
-  getProductsToCompare,
-  addToCompare,
-  removeFromCompare,
-} from '../../../redux/compareRedux';
 
-const mapStateToProps = (state, props) => ({
-  products: getAll(state),
-  comparing: getProductsToCompare(state, props.id),
+const mapStateToProps = state => ({
+  categories: getAll(state),
+  products: getNew(state),
 });
 
-const mapDispatchToProps = (dispatch, props) => ({
+const mapDispatchToProps = dispatch => ({
   addToFavorites: productId => dispatch(createAction_addFavorites(productId)),
   removeFromFavorites: productId => dispatch(createAction_removeFavorites(productId)),
-  addToCompare: () => dispatch(addToCompare({ id: props.id, ...props })),
-  removeFromCompare: () =>
-    dispatch(
-      removeFromCompare({
-        ...props,
-      })
-    ),
+  comparingToggle: productId => dispatch(comparingToggle(productId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductBox);

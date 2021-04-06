@@ -1,33 +1,38 @@
 @import '../../../styles/settings.scss';
 
-
 .component {
-    position: fixed;
-    bottom: 15px;
-    width: 100vw;
-    padding: $base-padding / 4;
-    background-color: rgba($light-bg, 0.95);
+    height: 100px;
+    width: 100px;
+    border: 2px solid $dark-border-color;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    z-index: 15000;
-    border-top: 5px solid $dark-border-color;
-    border-bottom: 5px solid $dark-border-color;
+    margin: 5px;
+    position: relative;
+    &:hover .imageLayer {
+      visibility: visible;
+    }
+    img {
+      width: 100px;
+      height: 100%;
+      object-fit: cover;
+    }
 }
 
-.button {
+.imageLayer {
   display: flex;
-  align-items: flex-end;
-  background: $primary;
-  color: $light-text-color;
-  margin-right: $base-padding * 2;
-  padding: ($base-padding / 4) ($base-padding / 2);
-  height: 50%;
-  border-radius: 2px;
-
-  &:hover {
-    background: $dark-bg;
-    text-decoration: none;
-    color: $light-text-color;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background-color: rgba($gray-white-bg,0.75);
+  justify-content: center;
+  align-items: center;
+  line-height: 100px;
+  .icon {
+    color: red;
+    font-size: 5rem;
   }
 }

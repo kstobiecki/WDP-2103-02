@@ -1,0 +1,32 @@
+@import "../../../styles/settings.scss";
+
+.bar {
+  background: $light-bg;
+  opacity: 90%;
+  position: fixed;
+  width: 100vw;
+  bottom: 25px;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+  border-top: 4px solid $dark-border-color;
+  border-bottom: 4px solid $dark-border-color;
+}
+
+.btnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: $base-padding;
+  
+}
+
+.compareBtn {
+  height: 50px;
+  text-transform: uppercase;
+
+
+}

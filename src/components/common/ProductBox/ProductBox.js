@@ -19,8 +19,7 @@ const ProductBox = ({
   id,
   favorites,
   compare,
-  addToCompare,
-  removeFromCompare,
+  comparingToggle,
   oldPrice,
   userStars,
 }) => (
@@ -55,12 +54,12 @@ const ProductBox = ({
           <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
         </Button>
         <Button
-          onClick={e => {
-            e.preventDefault();
-            addToCompare();
-          }}
           variant='outline'
           active={compare}
+          onClick={e => {
+            comparingToggle(id);
+            e.preventDefault();
+          }}
           data-tip={'Add to compare'}
         >
           <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
@@ -91,8 +90,7 @@ ProductBox.propTypes = {
   removeFromFavorites: PropTypes.func,
   id: PropTypes.string,
   compare: PropTypes.bool,
-  addToCompare: PropTypes.func,
-  removeFromCompare: PropTypes.func,
+  comparingToggle: PropTypes.func,
   comparing: PropTypes.array,
   image: PropTypes.string,
   oldPrice: PropTypes.number,
