@@ -5,6 +5,8 @@ export const getNew = ({ products }) =>
   products.filter(item => item.newFurniture === true);
 export const getTopRated = ({ products }) =>
   products.filter(product => product.userStars > 2);
+export const comparedProducts = ({ products }) =>
+  products.filter(products => products.compare === true);
 
 /* action name creator */
 const reducerName = 'products';
@@ -14,6 +16,7 @@ const createActionName = name => `app/${reducerName}/${name}`;
 export const ADD_TO_FAVORITES = createActionName('ADD_TO_FAVORITES');
 export const REMOVE_FROM_FAVORITES = createActionName('REMOVE_FROM_FAVORITES');
 export const CHANGE_USER_STARS = createActionName('CHANGE_USER_STARS');
+export const COMPARING_TOGGLE = createActionName('COMPARING_TOGGLE');
 
 /* action creators */
 export const createAction_addFavorites = payload => ({
@@ -27,6 +30,10 @@ export const createAction_removeFavorites = payload => ({
 export const createAction_changeUserStars = payload => ({
   payload,
   type: CHANGE_USER_STARS,
+});
+export const comparingToggle = productId => ({
+  payload: { productId },
+  type: COMPARING_TOGGLE,
 });
 
 /* reducer */
@@ -59,6 +66,18 @@ export default function reducer(statePart = [], action = {}) {
         newState[index].userStars = action.payload.star;
       }
       return newState;
+    }
+    case COMPARING_TOGGLE: {
+      const index = statePart.findIndex(({ id }) => id === action.payload.productId);
+      const compareLength = statePart.filter(product => product.compare).length;
+
+      const maxToCompare = 4;
+
+      if (compareLength === maxToCompare && !statePart[index].compare) {
+        return statePart;
+      }
+      statePart[index] = { ...statePart[index], compare: !statePart[index].compare };
+      return [...statePart];
     }
     default:
       return statePart;
